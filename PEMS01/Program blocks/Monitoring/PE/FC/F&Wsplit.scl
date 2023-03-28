@@ -1,0 +1,59 @@
+﻿FUNCTION "F&Wsplit" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      CodeFlt : Int;
+      CodeWarn : Int;
+   END_VAR
+
+   VAR_OUTPUT 
+      Flt : Int;
+      ModFlt : Int;
+      Warn : Int;
+      ModWarn : Int;
+   END_VAR
+
+
+BEGIN
+	//Inverter Fault
+	
+	#Flt.%X0 := #CodeFlt.%X0;
+	#Flt.%X1 := #CodeFlt.%X1;
+	#Flt.%X2 := #CodeFlt.%X2;
+	#Flt.%X3 := #CodeFlt.%X3;
+	#Flt.%X4 := #CodeFlt.%X4;
+	#Flt.%X5 := #CodeFlt.%X5;
+	#Flt.%X6 := #CodeFlt.%X6;
+	#Flt.%X7 := #CodeFlt.%X7;
+	#Flt.%X8 := #CodeFlt.%X8;
+	#Flt.%X9 := #CodeFlt.%X9;
+	
+	#ModFlt.%X0 := #CodeFlt.%X10;
+	#ModFlt.%X1 := #CodeFlt.%X11;
+	#ModFlt.%X2 := #CodeFlt.%X12;
+	#ModFlt.%X3 := #CodeFlt.%X13;
+	#ModFlt.%X4 := #CodeFlt.%X14;
+	#ModFlt.%X5 := #CodeFlt.%X15;
+	
+	//Inverter Warning
+	
+	#Warn.%X0 := #CodeWarn.%X0;
+	#Warn.%X1 := #CodeWarn.%X1;
+	#Warn.%X2 := #CodeWarn.%X2;
+	#Warn.%X3 := #CodeWarn.%X3;
+	#Warn.%X4 := #CodeWarn.%X4;
+	#Warn.%X5 := #CodeWarn.%X5;
+	#Warn.%X6 := #CodeWarn.%X6;
+	#Warn.%X7 := #CodeWarn.%X7;
+	#Warn.%X8 := #CodeWarn.%X8;
+	#Warn.%X9 := #CodeWarn.%X9;
+	
+	#ModWarn.%X0 := #CodeWarn.%X10;
+	#ModWarn.%X1 := #CodeWarn.%X11;
+	#ModWarn.%X2 := #CodeWarn.%X12;
+	#ModWarn.%X3 := #CodeWarn.%X13;
+	#ModWarn.%X4 := #CodeWarn.%X14;
+	#ModWarn.%X5 := #CodeWarn.%X15;
+	
+END_FUNCTION
+

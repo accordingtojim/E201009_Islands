@@ -1,0 +1,75 @@
+﻿FUNCTION "SM1_S4_StandBy" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	// **********************************************************
+	// *                   MANAGEMENT ACTION                    *
+	// **********************************************************
+	
+	REGION State Machine Status
+	    
+	    "SM1".xSsBootSt      := False;
+	    "SM1".xSsWarmUpSt    := False;
+	    "SM1".xSsReadySt     := False;
+	    "SM1".xSsStandBySt   := True;
+	    "SM1".xSsRunSt       := False;
+	    "SM1".xSsTestSt      := False;
+	    "SM1".xSsAutoMaintSt := False;
+	    "SM1".xSsStopSt      := False;
+	    "SM1".xSsFaultSt     := False;
+	    
+	    "SM1".iCountSS := 4;
+	    
+	END_REGION
+	
+	REGION Run Command
+	    
+	    IF "SM1".xRunCmd
+	    THEN
+	        "SM1".xPCSrunCmd := True;
+	    END_IF;
+	    
+	END_REGION
+	
+	
+	// **********************************************************
+	// *                 MANAGEMENT TRANSITION                  *
+	// **********************************************************
+	
+	// Transition from StandBy to Run
+	
+	IF "SM1".xPCSrunSt
+	THEN
+	    "SM1".xT41 := True;
+	END_IF;
+	
+	// Transition from StandBy to AutoMaint
+	
+	IF "SM1".xAutomaintCmd
+	THEN
+	    "SM1".xT42 := True;
+	END_IF;
+	
+	// Transition from StandBy to Stop
+	
+	IF "SM1".xStopCmd OR NOT "SM1".xEnbSSysSt
+	THEN
+	    "SM1".xT43 := True;
+	END_IF;
+	
+	// Transition from StandBy to Fault
+	
+	IF "SM1".xFltSt
+	THEN
+	    "SM1".xT44 := True;
+	END_IF;
+	
+	// Reset Transition
+	
+	"SM1".xT31   := False;
+	"SM1".xT51   := False;
+	"SM1".xT71   := False;
+	
+END_FUNCTION
+

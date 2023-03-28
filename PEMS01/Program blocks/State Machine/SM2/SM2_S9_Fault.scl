@@ -1,0 +1,82 @@
+﻿FUNCTION "SM2_S9_Fault" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	// **********************************************************
+	// *                   MANAGEMENT ACTION                    *
+	// **********************************************************
+	
+	REGION State Machine Status
+	    
+	    "SM2".xSsBootSt      := False;
+	    "SM2".xSsWarmUpSt    := False;
+	    "SM2".xSsReadySt     := False;
+	    "SM2".xSsStandBySt   := False;
+	    "SM2".xSsRunSt       := False;
+	    "SM2".xSsTestSt      := False;
+	    "SM2".xSsAutoMaintSt := False;
+	    "SM2".xSsStopSt      := False;
+	    "SM2".xSsFaultSt     := True;
+	    
+	    "SM2".iCountSS := 9;
+	    
+	END_REGION
+	
+	"SM2".xPCSrunCmd := False;
+	
+	REGION PCS Enable Off
+	    
+	    IF "SM2".xPCSreadySt
+	    THEN
+	        "SM2".xPCSenbCmd := False;
+	    END_IF;
+	END_REGION
+	
+	REGION Command Open RMU and Battery
+	    
+	    IF "SM2".xPCSstopSt AND NOT "SM2".xVacPCS
+	    THEN
+	        "SM2".xMVbreakerOpenCmd := True;
+	        
+	        IF "SM2".xMVbreakerOpenSt
+	        THEN
+	            "SM2".xBattCloseCmd := False;
+	        END_IF;
+	    END_IF;
+	    
+	END_REGION
+	
+	REGION Command Open Battery
+	    
+	    IF "SM2".xPCSstopSt AND "SM2".xVacPCS
+	    THEN
+	        "SM2".xBattCloseCmd := False;
+	    END_IF;
+	    
+	END_REGION
+	
+	
+	// **********************************************************
+	// *                 MANAGEMENT TRANSITION                  *
+	// **********************************************************
+	
+	// Transition from Alarm to WarmUp
+	
+	IF NOT "SM2".xFltSt AND "SM2".xBattOpenSt
+	THEN
+	    "SM2".xT91 := True;
+	    "SM2".xMVbreakerOpenCmd := False;
+	END_IF;
+	
+	// Reset Transition
+	
+	"SM2".xT22   := False;
+	"SM2".xT33   := False;
+	"SM2".xT44   := False;
+	"SM2".xT53   := False;
+	"SM2".xT62   := False;
+	"SM2".xT73   := False;
+	
+END_FUNCTION
+

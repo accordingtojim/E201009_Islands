@@ -1,0 +1,66 @@
+﻿FUNCTION "SM2_S5_Run" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	// **********************************************************
+	// *                   MANAGEMENT ACTION                    *
+	// **********************************************************
+	
+	REGION State Machine Status
+	    
+	    "SM2".xSsBootSt      := False;
+	    "SM2".xSsWarmUpSt    := False;
+	    "SM2".xSsReadySt     := False;
+	    "SM2".xSsStandBySt   := False;
+	    "SM2".xSsRunSt       := True;
+	    "SM2".xSsTestSt      := False;
+	    "SM2".xSsAutoMaintSt := False;
+	    "SM2".xSsStopSt      := False;
+	    "SM2".xSsFaultSt     := False;
+	    
+	    "SM2".iCountSS := 5;
+	    
+	END_REGION
+	
+	REGION StandBy Command
+	    
+	    IF "SM2".xStandByCmd
+	    THEN
+	        "SM2".xPCSrunCmd := False;
+	    END_IF;
+	    
+	END_REGION
+	
+	
+	// **********************************************************
+	// *                 MANAGEMENT TRANSITION                  *
+	// **********************************************************
+	
+	// Transition from Run to StandBy
+	
+	IF "SM2".xStandByCmd AND "SM2".xPCSreadySt
+	THEN
+	    "SM2".xT51 := True;
+	END_IF;
+	
+	// Transition from Run to Stop
+	
+	IF "SM2".xStopCmd OR NOT "SM2".xEnbSSysSt
+	THEN
+	    "SM2".xT52 := True;
+	END_IF;
+	
+	// Transition from Run to Fault
+	
+	IF "SM2".xFltSt
+	THEN
+	    "SM2".xT53 := True;
+	END_IF;
+	
+	// Reset Transition
+	
+	"SM2".xT41 := False;
+	
+END_FUNCTION
+

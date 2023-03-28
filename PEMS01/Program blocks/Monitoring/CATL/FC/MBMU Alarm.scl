@@ -1,0 +1,121 @@
+﻿FUNCTION "MBMU Alarm" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      "In Word1" : Word;
+      "In Word2" : Word;
+      "In Word3" : Word;
+   END_VAR
+
+   VAR_OUTPUT 
+      "Out Alm1" : Word;
+      "Out Warn1" : Word;
+   END_VAR
+
+
+BEGIN
+	IF #"In Word1".%X0 AND NOT #"In Word1".%X1
+	THEN
+	    #"Out Warn1".%X0 := True;
+	ELSIF #"In Word1".%X1 AND NOT #"In Word1".%X0
+	THEN
+	    #"Out Alm1".%X0 := True;
+	ELSIF #"In Word1".%X0 AND #"In Word1".%X1
+	THEN
+	    #"Out Alm1".%X1 := True;
+	ELSIF NOT #"In Word1".%X0 AND NOT #"In Word1".%X1
+	THEN
+	    #"Out Warn1".%X0 := False;
+	    #"Out Alm1".%X0  := False;
+	    #"Out Alm1".%X1  := False;
+	END_IF;
+	
+	IF #"In Word1".%X2 AND NOT #"In Word1".%X3
+	THEN
+	    #"Out Warn1".%X1 := True;
+	ELSIF #"In Word1".%X3 AND NOT #"In Word1".%X2
+	THEN
+	    #"Out Alm1".%X2 := True;
+	ELSIF #"In Word1".%X2 AND #"In Word1".%X3
+	THEN
+	    #"Out Alm1".%X3 := True;
+	ELSIF NOT #"In Word1".%X2 AND NOT #"In Word1".%X3
+	THEN
+	    #"Out Warn1".%X1 := False;
+	    #"Out Alm1".%X2  := False;
+	    #"Out Alm1".%X3  := False;
+	END_IF;
+	
+	IF #"In Word1".%X4 AND NOT #"In Word1".%X5
+	THEN
+	    #"Out Warn1".%X2 := True;
+	ELSIF #"In Word1".%X5 AND NOT #"In Word1".%X4
+	THEN
+	    #"Out Alm1".%X4 := True;
+	ELSIF #"In Word1".%X4 AND #"In Word1".%X5
+	THEN
+	    #"Out Alm1".%X5 := True;
+	ELSIF NOT #"In Word1".%X4 AND NOT #"In Word1".%X5
+	THEN
+	    #"Out Warn1".%X2 := False;
+	    #"Out Alm1".%X4  := False;
+	    #"Out Alm1".%X5  := False;
+	END_IF;
+	
+	IF #"In Word1".%X6 AND NOT #"In Word1".%X7
+	THEN
+	    #"Out Warn1".%X3 := True;
+	ELSIF #"In Word1".%X7 AND NOT #"In Word1".%X6
+	THEN
+	    #"Out Alm1".%X6 := True;
+	ELSIF #"In Word1".%X6 AND #"In Word1".%X7
+	THEN
+	    #"Out Alm1".%X7 := True;
+	ELSIF NOT #"In Word1".%X6 AND NOT #"In Word1".%X7
+	THEN
+	    #"Out Warn1".%X3 := False;
+	    #"Out Alm1".%X6  := False;
+	    #"Out Alm1".%X7  := False;
+	END_IF;
+	
+	IF #"In Word1".%X8 AND NOT #"In Word1".%X9
+	THEN
+	    #"Out Warn1".%X4 := True;
+	ELSIF #"In Word1".%X9 AND NOT #"In Word1".%X8
+	THEN
+	    #"Out Alm1".%X8 := True;
+	ELSIF #"In Word1".%X8 AND #"In Word1".%X9
+	THEN
+	    #"Out Alm1".%X9 := True;
+	ELSIF NOT #"In Word1".%X8 AND NOT #"In Word1".%X9
+	THEN
+	    #"Out Warn1".%X4 := False;
+	    #"Out Alm1".%X8  := False;
+	    #"Out Alm1".%X9  := False;
+	END_IF;
+	
+	IF #"In Word1".%X10 AND NOT #"In Word1".%X11
+	THEN
+	    #"Out Warn1".%X5 := True;
+	ELSIF #"In Word1".%X10 AND #"In Word1".%X10
+	THEN
+	    #"Out Alm1".%X10 := True;
+	ELSIF NOT #"In Word1".%X10 AND NOT #"In Word1".%X11
+	THEN
+	    #"Out Warn1".%X5 := False;
+	    #"Out Alm1".%X10 := False;
+	END_IF;
+	
+	
+	#"Out Alm1".%X11     := #"In Word2".%X0;
+	#"Out Warn1".%X6    := #"In Word2".%X1;
+	#"Out Warn1".%X7    := #"In Word2".%X2;
+	#"Out Alm1".%X12     := #"In Word2".%X3;
+	#"Out Alm1".%X13    := #"In Word2".%X4;
+	#"Out Warn1".%X8    := #"In Word2".%X5;
+	#"Out Alm1".%X14     := #"In Word2".%X6;
+	#"Out Alm1".%X15     := #"In Word2".%X7;
+	#"Out Warn1".%X9    := #"In Word2".%X8;
+	
+END_FUNCTION
+

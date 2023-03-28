@@ -1,0 +1,88 @@
+﻿FUNCTION "Init BMS" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	        //CATL Modbus
+	        //To run beetwen 10-20ms -> same as BMS 1 and BMS 2
+	        
+	        //BMS1 Initialized 10ms
+	        
+	        "BMS1".TCON10.InterfaceId := 64;
+	        "BMS1".TCON10.ID := 1;
+	        "BMS1".TCON10.RemoteAddress.ADDR[1] := 10;
+	        "BMS1".TCON10.RemoteAddress.ADDR[2] := 138;
+	        "BMS1".TCON10.RemoteAddress.ADDR[3] := 1;
+	        "BMS1".TCON10.RemoteAddress.ADDR[4] := 31;
+	        
+	        "BMS1".TCON10.ActiveEstablished := true;
+	        "BMS1".TCON10.ConnectionType := 11;
+	        "BMS1".TCON10.RemotePort := 502;
+	        
+	        //BMS1 Initialized 10ms
+	        
+	        "BMS1".TCON11.InterfaceId := 64;
+	        "BMS1".TCON11.ID := 2;
+	        "BMS1".TCON11.RemoteAddress.ADDR[1] := 10;
+	        "BMS1".TCON11.RemoteAddress.ADDR[2] := 138;
+	        "BMS1".TCON11.RemoteAddress.ADDR[3] := 1;
+	        "BMS1".TCON11.RemoteAddress.ADDR[4] := 31;
+	        
+	        "BMS1".TCON11.ActiveEstablished := true;
+	        "BMS1".TCON11.ConnectionType := 11;
+	        "BMS1".TCON11.RemotePort := 502;
+	        
+	        //BMS1 Initialized
+	        
+	        "BMS1".TCON.InterfaceId := 64;
+	        "BMS1".TCON.ID := 3;
+	        "BMS1".TCON.RemoteAddress.ADDR[1] := 10;
+	        "BMS1".TCON.RemoteAddress.ADDR[2] := 138;
+	        "BMS1".TCON.RemoteAddress.ADDR[3] := 1;
+	        "BMS1".TCON.RemoteAddress.ADDR[4] := 31;
+	        
+	        "BMS1".TCON.ActiveEstablished := true;
+	        "BMS1".TCON.ConnectionType := 11;
+	        "BMS1".TCON.RemotePort := 502;
+	        
+	        //BMS2 Initialized 10ms
+	        
+	        "BMS2".TCON10.InterfaceId := 64;
+	        "BMS2".TCON10.ID := 4;
+	        "BMS2".TCON10.RemoteAddress.ADDR[1] := 10;
+	        "BMS2".TCON10.RemoteAddress.ADDR[2] := 138;
+	        "BMS2".TCON10.RemoteAddress.ADDR[3] := 1;
+	        "BMS2".TCON10.RemoteAddress.ADDR[4] := 32;
+	        
+	        "BMS2".TCON10.ActiveEstablished := true;
+	        "BMS2".TCON10.ConnectionType := 11;
+	        "BMS2".TCON10.RemotePort := 502;
+	        
+	        //BMS2 Initialized 10ms
+	        
+	        "BMS2".TCON11.InterfaceId := 64;
+	        "BMS2".TCON11.ID := 5;
+	        "BMS2".TCON11.RemoteAddress.ADDR[1] := 10;
+	        "BMS2".TCON11.RemoteAddress.ADDR[2] := 138;
+	        "BMS2".TCON11.RemoteAddress.ADDR[3] := 1;
+	        "BMS2".TCON11.RemoteAddress.ADDR[4] := 32;
+	        
+	        "BMS2".TCON11.ActiveEstablished := true;
+	        "BMS2".TCON11.ConnectionType := 11;
+	        "BMS2".TCON11.RemotePort := 502;
+	        
+	        //BMS2 Initialized
+	        
+	        "BMS2".TCON.InterfaceId := 64;
+	        "BMS2".TCON.ID := 6;
+	        "BMS2".TCON.RemoteAddress.ADDR[1] := 10;
+	        "BMS2".TCON.RemoteAddress.ADDR[2] := 138;
+	        "BMS2".TCON.RemoteAddress.ADDR[3] := 1;
+	        "BMS2".TCON.RemoteAddress.ADDR[4] := 32;
+	        
+	        "BMS2".TCON.ActiveEstablished := true;
+	        "BMS2".TCON.ConnectionType := 11;
+	        "BMS2".TCON.RemotePort := 502;
+	        
+END_FUNCTION
+

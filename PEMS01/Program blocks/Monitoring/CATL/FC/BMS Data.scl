@@ -1,0 +1,29 @@
+﻿FUNCTION "BMS Data" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      arrInput : Array[1..125] of Word;
+   END_VAR
+
+   VAR_OUTPUT 
+      strOutput : "BMS_BB";
+   END_VAR
+
+
+BEGIN
+	REGION
+	    // 20210423 First Release
+	END_REGION
+	
+	REGION BMS Data
+	    
+	    #strOutput.iHeartBeatFb         := WORD_TO_INT(#arrInput[1]);
+	    #strOutput.wPwrOnHvSt           := #arrInput[2];
+	    #strOutput.wSMstatusSt          := #arrInput[3];
+	    #strOutput.iNBRconnectCount     := WORD_TO_INT(#arrInput[5]);
+	    #strOutput.rEnergyAvlChaMeas    := INT_TO_REAL(WORD_TO_INT(#arrInput[8])) / 10.0;
+	    #strOutput.rEnergyAvlDschMeas   := INT_TO_REAL(WORD_TO_INT(#arrInput[9])) / 10.0;
+	    
+	END_REGION
+END_FUNCTION
+

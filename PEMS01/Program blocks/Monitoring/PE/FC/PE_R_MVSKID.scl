@@ -1,0 +1,79 @@
+﻿FUNCTION "PE_R_MVSKID" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Input_Data : Array[1..125] of Word;
+   END_VAR
+
+   VAR_OUTPUT 
+      Output_Data : "R_MV";
+   END_VAR
+
+
+BEGIN
+	REGION
+	    // 2022/01/24
+	END_REGION
+	
+	REGION
+	    
+	    #Output_Data.xTrafo1TempTripSt      := #Input_Data[1].%X0;
+	    #Output_Data.xTrafo1TempAlmSt       := #Input_Data[1].%X1;
+	    #Output_Data.xTrafo1PressTripSt     := #Input_Data[1].%X2;
+	    #Output_Data.xTrafo1OilLevTripSt    := #Input_Data[1].%X3;
+	    #Output_Data.xLine1DiscOpenSt       := #Input_Data[1].%X4;
+	    #Output_Data.xLine1DiscCloseSt      := #Input_Data[1].%X5;
+	    #Output_Data.xLine1GndCloseSt       := #Input_Data[1].%X6;
+	    #Output_Data.xProt1GasPress1St      := #Input_Data[1].%X7;
+	    
+	    #Output_Data.xLine2DiscOpenSt       := #Input_Data[1].%X8;
+	    #Output_Data.xLine2DiscCloseSt      := #Input_Data[1].%X9;
+	    #Output_Data.xLine2GndCloseSt       := #Input_Data[1].%X10;
+	    #Output_Data.xProt1DiscCloseSt      := #Input_Data[1].%X11;
+	    #Output_Data.xProt1DiscOpenSt       := #Input_Data[1].%X12;
+	    #Output_Data.xProt1GndCloseSt       := #Input_Data[1].%X13;
+	    #Output_Data.xProt1CircBrkOpenSt    := #Input_Data[1].%X14;
+	    #Output_Data.xProt1CircBrkCloseSt   := #Input_Data[1].%X15;
+	    
+	    #Output_Data.xProt1RelayFltSt       := #Input_Data[2].%X0;
+	    #Output_Data.xLV1SurgeProtSt        := #Input_Data[2].%X1;
+	    #Output_Data.xSpring1ChargeSt       := #Input_Data[2].%X2;
+	    #Output_Data.xProt1GasPress2St      := #Input_Data[2].%X3;
+	    #Output_Data.xBackfeedtrakers1St    := #Input_Data[2].%X4;
+	    #Output_Data.xProt1NeutrSurgeFltSt  := #Input_Data[2].%X5;
+	    #Output_Data.xLVS1SmokeDetecSt       := #Input_Data[2].%X6;
+	    #Output_Data.xSmoke1DetecSt         := #Input_Data[2].%X7;
+	    
+	    #Output_Data.xSAI1SmokeDetecSt      := #Input_Data[2].%X8;
+	    #Output_Data.xSSAA1SmokeDetecSt     := #Input_Data[2].%X9;
+	    #Output_Data.xAirCond1AlmSt         := #Input_Data[2].%X10;
+	    #Output_Data.xAcBrkHENK1OpenSt      := #Input_Data[2].%X11;
+	    #Output_Data.xAcBrkHENK1CloseSt     := #Input_Data[2].%X12;
+	    #Output_Data.xTrafo2TempTripSt      := #Input_Data[2].%X13;
+	    #Output_Data.xTrafo2TempAlmSt       := #Input_Data[2].%X14;
+	    #Output_Data.xTrafo2PressTripSt     := #Input_Data[2].%X15;
+	    
+	    #Output_Data.xTrafo2OilLevTripSt    := #Input_Data[3].%X0;
+	    #Output_Data.xProt2DiscCloseSt      := #Input_Data[3].%X1;
+	    #Output_Data.xProt2DiscOpenSt       := #Input_Data[3].%X2;
+	    #Output_Data.xProt2GndCloseSt       := #Input_Data[3].%X3;
+	    #Output_Data.xProt2CircBrkOpenSt    := #Input_Data[3].%X4;
+	    #Output_Data.xProt2CircBrkCloseSt   := #Input_Data[3].%X5;
+	    #Output_Data.xProt2NCWatchdogSt     := #Input_Data[3].%X6;
+	    #Output_Data.xLV2SurgeProtSt        := #Input_Data[3].%X7;
+	    
+	    #Output_Data.xSpring2ChargeSt       := #Input_Data[3].%X8;
+	    #Output_Data.xAcBrkHENK2OpenSt      := #Input_Data[3].%X9;
+	    #Output_Data.xAcBrkHENK2CloseSt     := #Input_Data[3].%X10;
+	    #Output_Data.xBackfeedtrakers2St    := #Input_Data[3].%X11;
+	    #Output_Data.xProt2NeutrSurgeSt     := #Input_Data[3].%X12;
+	    #Output_Data.xSAI2SmokeDetecSt      := #Input_Data[3].%X13;
+	    #Output_Data.xSSAA2SmokeDetecSt     := #Input_Data[3].%X14;
+	    #Output_Data.xAirCond2AlmSt         := #Input_Data[3].%X15;
+	    
+	    #Output_Data.rPT100Trafo1St         := INT_TO_REAL(WORD_TO_INT(#Input_Data[4]))/10.0;
+	    #Output_Data.rPT100Trafo2St         := INT_TO_REAL(WORD_TO_INT(#Input_Data[5]))/10.0;
+	    
+	END_REGION
+END_FUNCTION
+

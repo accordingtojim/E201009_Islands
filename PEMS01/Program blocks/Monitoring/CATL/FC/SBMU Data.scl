@@ -1,0 +1,77 @@
+﻿FUNCTION "SBMU Data" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      arrInput : Array[1..125] of Word;
+   END_VAR
+
+   VAR_OUTPUT 
+      strOutBR : "BMS_BR";
+      strOutTMS : "BMS_TMS";
+   END_VAR
+
+
+BEGIN
+	REGION
+	    //20210503 First Release
+	END_REGION
+	
+	REGION SBMU Data
+	    
+	    #strOutBR.wWarn1        := #arrInput[1];
+	    #strOutBR.wWarn2        := #arrInput[2];
+	    #strOutBR.wWarn3        := #arrInput[3];
+	    #strOutBR.wWarn4        := #arrInput[4];
+	    #strOutBR.xKprechSt     := WORD_TO_BOOL(#arrInput[17]);
+	    #strOutBR.xKposSt       := WORD_TO_BOOL(#arrInput[18]);
+	    #strOutBR.xKnegSt       := WORD_TO_BOOL(#arrInput[19]);
+	    #strOutBR.xBalSt        := WORD_TO_BOOL(#arrInput[21]);
+	    #strOutBR.rVdcMeas      := INT_TO_REAL(WORD_TO_INT(#arrInput[33])) / 10.0;
+	    #strOutBR.rIdcMeas      := (INT_TO_REAL(WORD_TO_INT(#arrInput[35])) / 10.0) - 2000.0;
+	    #strOutBR.rSOCmeas      := INT_TO_REAL(WORD_TO_INT(#arrInput[36])) / 10.0;
+	    #strOutBR.rSOHmeas      := INT_TO_REAL(WORD_TO_INT(#arrInput[37])) / 10.0;
+	    #strOutBR.rVcellMaxMeas := INT_TO_REAL(WORD_TO_INT(#arrInput[38])) / 1000.0;
+	    #strOutBR.rVcellMinMeas := INT_TO_REAL(WORD_TO_INT(#arrInput[39])) / 1000.0;
+	    #strOutBR.rVcellAvgMeas := INT_TO_REAL(WORD_TO_INT(#arrInput[40])) / 1000.0;
+	    #strOutBR.iTcellMaxMeas := WORD_TO_INT(#arrInput[41]) - 50;
+	    #strOutBR.iTcellMinMeas := WORD_TO_INT(#arrInput[42]) - 50;
+	    #strOutBR.iTcellAvgMeas := WORD_TO_INT(#arrInput[43]) - 50;
+	    #strOutBR.rIchaLim      := (INT_TO_REAL(WORD_TO_INT(#arrInput[44])) / 10.0) - 2000.0;
+	    #strOutBR.rIdschLim     := (INT_TO_REAL(WORD_TO_INT(#arrInput[45])) / 10.0) - 2000.0;
+	    
+	    #strOutBR.iVcellMaxPos  := #arrInput[49].%B0;
+	    #strOutBR.iVmodMaxPos   := #arrInput[49].%B1;
+	    #strOutBR.iVcellMinPos  := #arrInput[50].%B0;
+	    #strOutBR.iVmodMinPos   := #arrInput[50].%B1;
+	    #strOutBR.iTcellMaxPos  := #arrInput[51].%B0;
+	    #strOutBR.iTmodMaxPos   := #arrInput[51].%B1;
+	    #strOutBR.iTcellMinPos  := #arrInput[52].%B0;
+	    #strOutBR.iTmodMinPos   := #arrInput[52].%B1;
+	    
+	    #strOutBR.rVcellSumMeas := INT_TO_REAL(WORD_TO_INT(#arrInput[56])) / 1000.0;
+	    
+	    #strOutTMS.xPwrOffCmd   := #arrInput[73] = 0;
+	    #strOutTMS.xCoolingCmd  := #arrInput[73] = 1;
+	    #strOutTMS.xHeatingCmd  := #arrInput[73] = 2;
+	    #strOutTMS.xSelfCircCmd := #arrInput[73] = 3;
+	    
+	    #strOutTMS.iTempSet     := WORD_TO_INT(#arrInput[74]) - 50;
+	    
+	    #strOutTMS.xPwrOffSt    := #arrInput[75] = 0;
+	    #strOutTMS.xCoolingSt   := #arrInput[75] = 1;
+	    #strOutTMS.xHeatingSt   := #arrInput[75] = 2;
+	    #strOutTMS.xSelfCircSt  := #arrInput[75] = 3;
+	    
+	    #strOutBR.iTrackInMeas  := WORD_TO_INT(#arrInput[76]) - 50;
+	    #strOutBR.iTrackOutMeas := WORD_TO_INT(#arrInput[77]) - 50;
+	    #strOutBR.iTambMeas     := WORD_TO_INT(#arrInput[78]) - 50;
+	    
+	    #strOutTMS.rPowerMeas := (INT_TO_REAL(WORD_TO_INT(#arrInput[79])) / 10.0) - 2000.0;
+	    #strOutTMS.wCodeFlt     := #arrInput[80];
+	    
+	    #strOutBR.xDoorSt       := WORD_TO_BOOL(#arrInput[81]);
+	    #strOutBR.xFanSt        := WORD_TO_BOOL(#arrInput[82]);
+	    
+	END_REGION
+END_FUNCTION
+

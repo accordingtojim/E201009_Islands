@@ -1,0 +1,64 @@
+﻿FUNCTION "SM1_S8_Stop" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	// **********************************************************
+	// *                   MANAGEMENT ACTION                    *
+	// **********************************************************
+	
+	REGION State Machine Status
+	    
+	    "SM1".xSsBootSt      := False;
+	    "SM1".xSsWarmUpSt    := False;
+	    "SM1".xSsReadySt     := False;
+	    "SM1".xSsStandBySt   := False;
+	    "SM1".xSsRunSt       := False;
+	    "SM1".xSsTestSt      := False;
+	    "SM1".xSsAutoMaintSt := False;
+	    "SM1".xSsStopSt      := True;
+	    "SM1".xSsFaultSt     := False;
+	    
+	    "SM1".iCountSS := 8;
+	    
+	END_REGION
+	
+	"SM1".xPCSrunCmd := False;
+	
+	REGION PCS enable Off
+	    
+	    IF "SM1".xPCSreadySt
+	    THEN
+	        "SM1".xPCSenbCmd := False;
+	    END_IF;
+	END_REGION
+	
+	REGION Command Open Battery
+	    
+	    IF "SM1".xPCSstopSt
+	    THEN
+	        "SM1".xBattCloseCmd := False;
+	    END_IF;
+	END_REGION
+	
+	
+	// **********************************************************
+	// *                 MANAGEMENT TRANSITION                  *
+	// **********************************************************
+	
+	// Transition from Stop to WarmUp
+	
+	IF "SM1".xBattOpenSt AND NOT "SM1".xStopAutomaintCmd
+	THEN
+	    "SM1".xT81 := True;
+	END_IF;
+	
+	// Reset Transition
+	
+	"SM1".xT32   := False;
+	"SM1".xT43   := False;
+	"SM1".xT52   := False;
+	"SM1".xT72   := False;
+	
+END_FUNCTION
+

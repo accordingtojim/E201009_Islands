@@ -1,0 +1,49 @@
+﻿FUNCTION "PE_InvWarn" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      iInput : Int;
+      i0 : Int;
+      i1 : Int;
+      i2 : Int;
+      i3 : Int;
+      i4 : Int;
+      i5 : Int;
+      i6 : Int;
+      i7 : Int;
+      i8 : Int;
+      i9 : Int;
+      i10 : Int;
+      i11 : Int;
+      i12 : Int;
+      i13 : Int;
+      i14 : Int;
+      i15 : Int;
+   END_VAR
+
+   VAR_OUTPUT 
+      wOut : Word;
+   END_VAR
+
+
+BEGIN
+	
+	#wOut.%X0 := #iInput = #i0;
+	#wOut.%X1 := #iInput = #i1;
+	#wOut.%X2 := #iInput = #i2;
+	#wOut.%X3 := #iInput = #i3;
+	#wOut.%X4 := #iInput = #i4;
+	#wOut.%X5 := #iInput = #i5;
+	#wOut.%X6 := #iInput = #i6;
+	#wOut.%X7 := #iInput = #i7;
+	#wOut.%X8 := #iInput = #i8;
+	#wOut.%X9 := #iInput = #i9;
+	#wOut.%X10 := #iInput = #i10;
+	#wOut.%X11 := #iInput = #i11;
+	#wOut.%X12 := #iInput = #i12;
+	#wOut.%X13 := #iInput = #i13;
+	#wOut.%X14 := #iInput = #i14;
+	#wOut.%X15 := #iInput = #i15;
+	
+END_FUNCTION
+

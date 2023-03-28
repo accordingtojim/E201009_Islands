@@ -1,0 +1,28 @@
+﻿FUNCTION "Battery Status" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      wInput : Word;
+   END_VAR
+
+   VAR_OUTPUT 
+      "xStatus:0" : Bool;
+      "xStatus:1" : Bool;
+      "xStatus:2" : Bool;
+      "xStatus:3" : Bool;
+      "xStatus:4" : Bool;
+      "xStatus:5" : Bool;
+   END_VAR
+
+
+BEGIN
+	
+	#"xStatus:0" := #wInput = 0;
+	#"xStatus:1" := #wInput = 1;
+	#"xStatus:2" := #wInput = 2;
+	#"xStatus:3" := #wInput = 3;
+	#"xStatus:4" := #wInput = 4;
+	#"xStatus:5" := #wInput = 5;
+	
+END_FUNCTION
+

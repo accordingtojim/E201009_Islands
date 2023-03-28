@@ -1,0 +1,68 @@
+﻿FUNCTION "SM2_S7_AutoMaint" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	// **********************************************************
+	// *                   MANAGEMENT ACTION                    *
+	// **********************************************************
+	
+	REGION State Machine Status
+	    
+	    "SM2".xSsBootSt      := False;
+	    "SM2".xSsWarmUpSt    := False;
+	    "SM2".xSsReadySt     := False;
+	    "SM2".xSsStandBySt   := False;
+	    "SM2".xSsRunSt       := False;
+	    "SM2".xSsTestSt      := False;
+	    "SM2".xSsAutoMaintSt := True;
+	    "SM2".xSsStopSt      := False;
+	    "SM2".xSsFaultSt     := False;
+	    
+	    "SM2".iCountSS := 7;
+	    
+	END_REGION
+	
+	REGION Autocharge Bank
+	    
+	    "SM2".xPCSrunCmd := True;
+	    
+	    IF "SM2".xPCSrunSt
+	    THEN
+	        "SM2".rPacAutomRef := "HMI".rPacAutomRef;
+	    END_IF;
+	    
+	END_REGION
+	
+	
+	// **********************************************************
+	// *                 MANAGEMENT TRANSITION                  *
+	// **********************************************************
+	
+	// Transition from AutoMaint to StandBy
+	
+	IF "SM2".xAutomaintSt
+	THEN
+	    "SM2".xT71 := True;
+	END_IF;
+	
+	// Transition from AutoMaint to Stop
+	
+	IF "SM2".xStopCmd
+	THEN
+	    "SM2".xT72 := True;
+	END_IF;
+	
+	// Transition from AutoMaint to Fault
+	
+	IF "SM2".xFltSt
+	THEN
+	    "SM2".xT73 := True;
+	END_IF;
+	
+	// Reset Transition
+	
+	"SM2".xT42    := False;
+	
+END_FUNCTION
+

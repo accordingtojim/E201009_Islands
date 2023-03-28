@@ -1,0 +1,96 @@
+﻿FUNCTION "SM2_S3_Ready" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      xSSysSt : Bool;
+   END_VAR
+
+
+BEGIN
+	// **********************************************************
+	// *                   MANAGEMENT ACTION                    *
+	// **********************************************************
+	
+	REGION State Machine Status
+	    
+	    "SM2".xSsBootSt      := False;
+	    "SM2".xSsWarmUpSt    := False;
+	    "SM2".xSsReadySt     := True;
+	    "SM2".xSsStandBySt   := False;
+	    "SM2".xSsRunSt       := False;
+	    "SM2".xSsTestSt      := False;
+	    "SM2".xSsAutoMaintSt := False;
+	    "SM2".xSsStopSt      := False;
+	    "SM2".xSsFaultSt     := False;
+	        
+	    "SM2".iCountSS := 3;
+	    
+	END_REGION
+	
+	REGION Ready Condition
+	    
+	    IF "SM2".xReadyCondSt AND "SM2".xEnbSSysSt
+	    THEN
+	        #xSSysSt := True;
+	    END_IF;
+	    
+	END_REGION
+	
+	REGION Command Battery Close
+	    
+	    IF #xSSysSt AND ("SM2".xStandByCmd OR "SM2".xRunCmd)
+	    THEN
+	        "SM2".xBattCloseCmd := True;
+	    END_IF;
+	    
+	END_REGION
+	
+	REGION Command Enable PCS
+	    
+	    IF "SM2".xBattCloseSt AND "SM2".xMVbreakerCloseSt
+	    THEN
+	        "SM2".xPCSenbCmd := True;
+	    END_IF;
+	END_REGION
+	
+	
+	// **********************************************************
+	// *                 MANAGEMENT TRANSITION                  *
+	// **********************************************************
+	
+	// Transition from Ready to StandBy
+	
+	IF "SM2".xBattCloseSt AND "SM2".xPCSreadySt
+	THEN
+	    "SM2".xT31 := True;
+	    #xSSysSt := False;
+	END_IF;
+	
+	// Transition from Ready to Stop
+	
+	IF "SM2".xStopCmd AND False
+	THEN
+	    "SM2".xT32 := True;
+	END_IF;
+	
+	// Transition from Ready to Fault
+	
+	IF "SM2".xFltSt
+	THEN
+	    "SM2".xT33 := True;
+	END_IF;
+	
+	// Transition from Ready to Test
+	
+	IF "SM2".xTestCmd
+	THEN
+	    "SM2".xT34 := True;
+	END_IF;
+	
+	// Reset Transition
+	
+	"SM2".xT21   := False;
+	"SM2".xT61   := False;
+	
+END_FUNCTION
+

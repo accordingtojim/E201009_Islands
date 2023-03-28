@@ -1,0 +1,35 @@
+﻿FUNCTION "PN Read Data" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	//******************************************************************//
+	//                                                                  //
+	//                      Read Data from PLC CORE                     //
+	//                                                                  //
+	//******************************************************************//
+	
+	//Boolean
+	
+	"PN".xStopCmd       := "PN".R."x1.1";
+	"PN".xStandByCmd    := "PN".R."x1.2";
+	"PN".xRunCmd        := "PN".R."x1.3";
+	"PN".xFltClearCmd   := "PN".R."x1.4";
+	"PN".xFltCmd        := "PN".R."x1.8";
+	
+	"PN".MVSKID.xCircBrkCloseCmd    := "PN".R."x2.1";
+	"PN".MVSKID.xCircBrkOpenCmd     := "PN".R."x2.2";
+	
+	//Integer
+	
+	"PN".iKeepAlive := "PN".R.i1;
+	
+	//Real
+	
+	"PN".SS1.rPacRef := "PN".R.r1;
+	"PN".SS1.rQacRef := "PN".R.r2;
+	"PN".SS2.rPacRef := "PN".R.r3;
+	"PN".SS2.rQacRef := "PN".R.r4;
+	
+END_FUNCTION
+

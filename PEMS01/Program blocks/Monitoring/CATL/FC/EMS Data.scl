@@ -1,0 +1,26 @@
+﻿FUNCTION "EMS Data" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      strInput : "BMS_BB";
+   END_VAR
+
+   VAR_OUTPUT 
+      arrOutput : Array[1..125] of Word;
+   END_VAR
+
+
+BEGIN
+	REGION
+	    //20210423 First Release
+	END_REGION
+	
+	REGION EMS Data
+	    
+	    #arrOutput[1]   := INT_TO_WORD(#strInput.iHeartBeatCount);
+	    #arrOutput[2]   := #strInput.wCmd;
+	    #arrOutput[13]  := #strInput.wFltClearCmd;
+	    
+	END_REGION
+END_FUNCTION
+

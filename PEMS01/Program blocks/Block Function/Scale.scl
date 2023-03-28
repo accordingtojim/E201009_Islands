@@ -1,0 +1,20 @@
+﻿FUNCTION "Scale" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      rV1 : Real;
+      rV2 : Real;
+      rVn : Real;
+   END_VAR
+
+   VAR_OUTPUT 
+      rV : Real;
+   END_VAR
+
+
+BEGIN
+	
+	#rV := (#rV1 * #rV2) / #rVn;
+	
+END_FUNCTION
+

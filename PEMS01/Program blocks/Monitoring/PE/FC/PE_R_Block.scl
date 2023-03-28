@@ -1,0 +1,258 @@
+﻿FUNCTION "PE_R_Block" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Input_Data : Array[1..125] of Word;
+   END_VAR
+
+   VAR_OUTPUT 
+      Output_Data : "R_PE";
+   END_VAR
+
+   VAR_TEMP 
+      "DWord" : DWord;
+   END_VAR
+
+
+BEGIN
+	REGION
+	    // 2022/02/16
+	END_REGION
+	
+	REGION
+	    
+	    #Output_Data.rPacMeas       := INT_TO_REAL(WORD_TO_INT(#Input_Data[1]));
+	    #Output_Data.rQacMeas       := INT_TO_REAL(WORD_TO_INT(#Input_Data[2]));
+	    #Output_Data.rSacMeas       := INT_TO_REAL(WORD_TO_INT(#Input_Data[3]));
+	    #Output_Data.rPFmeas        := INT_TO_REAL(WORD_TO_INT(#Input_Data[4]))/1000.0;
+	    #Output_Data.rFrMeas        := INT_TO_REAL(WORD_TO_INT(#Input_Data[5]))/100.0;
+	    
+	    #Output_Data.rVrsMeas       := INT_TO_REAL(WORD_TO_INT(#Input_Data[6]));
+	    #Output_Data.rVstMeas       := INT_TO_REAL(WORD_TO_INT(#Input_Data[7]));
+	    #Output_Data.rVtrMeas       := INT_TO_REAL(WORD_TO_INT(#Input_Data[8]));
+	    #Output_Data.rIrMeas        := INT_TO_REAL(WORD_TO_INT(#Input_Data[9]));
+	    #Output_Data.rIsMeas        := INT_TO_REAL(WORD_TO_INT(#Input_Data[10]));
+	    #Output_Data.rItMeas        := INT_TO_REAL(WORD_TO_INT(#Input_Data[11]));
+	     
+	    #Output_Data.rPdcMeas       := INT_TO_REAL(WORD_TO_INT(#Input_Data[12]));
+	    #Output_Data.rIdcMeas       := INT_TO_REAL(WORD_TO_INT(#Input_Data[13]));
+	    
+	    #Output_Data.iImonDc1St     := WORD_TO_INT(#Input_Data[14]);
+	    
+	    #Output_Data.iImonAcSt      := WORD_TO_INT(#Input_Data[15]);
+	    
+	    #Output_Data.iCodeFlt       := WORD_TO_INT(#Input_Data[16]);
+	    #Output_Data.iCodeWarn      := WORD_TO_INT(#Input_Data[17]);
+	    
+	    #Output_Data.iCodeSt        := WORD_TO_INT(#Input_Data[18]);
+	    #Output_Data.xInvOffSt      := #Output_Data.iCodeSt = 2;
+	    #Output_Data.xInvStandBySt  := #Output_Data.iCodeSt = 14;
+	    #Output_Data.xInvReadySt    := #Output_Data.iCodeSt = 4;
+	    #Output_Data.xInvPrOnSt     := #Output_Data.iCodeSt = 17;
+	    #Output_Data.xInvRunSt      := #Output_Data.iCodeSt = 6;
+	    #Output_Data.xInvStopSt     := #Output_Data.iCodeSt = 7;
+	    #Output_Data.xInvFltSt      := #Output_Data.iCodeSt = 9;
+	    
+	    #Output_Data.rTmodAcMeas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[19]));
+	    #Output_Data.rTigbtMaxMeas  := INT_TO_REAL(WORD_TO_INT(#Input_Data[20]));
+	    #Output_Data.rTmodMaxMeas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[21]));
+	    
+	    #Output_Data.wDIboardSt     := #Input_Data[22];
+	    #Output_Data.wDOboardSt     := #Input_Data[23];
+	    
+	    #Output_Data.rTmodAcInMeas      := INT_TO_REAL(WORD_TO_INT(#Input_Data[24]))/10.0;
+	    #Output_Data.iFltModId          := WORD_TO_INT(#Input_Data[25]);
+	    #Output_Data.rRHintMeas         := INT_TO_REAL(WORD_TO_INT(#Input_Data[26]));
+	    #Output_Data.rVaux1Meas         := INT_TO_REAL(WORD_TO_INT(#Input_Data[27]))/100.0;
+	    #Output_Data.rVaux2Meas         := INT_TO_REAL(WORD_TO_INT(#Input_Data[28]))/100.0;
+	    
+	    #Output_Data.rPacAvlLim  := INT_TO_REAL(WORD_TO_INT(#Input_Data[29]))/1000.0;
+	    #Output_Data.rQacAvlLim  := INT_TO_REAL(WORD_TO_INT(#Input_Data[30]))/1000.0;
+	    
+	    #Output_Data.wDUchanSel     := #Input_Data[31];
+	    #Output_Data.wDUchanSt      := #Input_Data[42];
+	    
+	    #Output_Data.rVdcBus1Meas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[32]));
+	    #Output_Data.rVdcBus2Meas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[33]));
+	    #Output_Data.rIdcBus1Meas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[34]));
+	    #Output_Data.rIdcBus2Meas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[35]));
+	    #Output_Data.rIRFIcapRef    := INT_TO_REAL(WORD_TO_INT(#Input_Data[36]))/10.0;
+	    
+	    #Output_Data.rPavlChaBus1   := INT_TO_REAL(WORD_TO_INT(#Input_Data[37]))/100.0;
+	    #Output_Data.rPavlDschBus1 := INT_TO_REAL(WORD_TO_INT(#Input_Data[38]))/100.0;
+	    #Output_Data.rPavlChaBus2   := INT_TO_REAL(WORD_TO_INT(#Input_Data[39]))/100.0;
+	    #Output_Data.rPavlDschBus2 := INT_TO_REAL(WORD_TO_INT(#Input_Data[40]))/100.0;
+	    
+	    #Output_Data.iImonDc2St     := WORD_TO_INT(#Input_Data[41]);
+	    
+	    #Output_Data.wMod1St        := WORD_TO_INT(#Input_Data[43]);
+	    #Output_Data.xMod1StopSt    := #Output_Data.wMod1St = 1;
+	    #Output_Data.xMod1ReadySt   := #Output_Data.wMod1St = 3;
+	    #Output_Data.xMod1MainAcSt  := #Output_Data.wMod1St = 5;
+	    #Output_Data.xMod1RunSt     := #Output_Data.wMod1St = 7;
+	    #Output_Data.xMod1FltSt     := #Output_Data.wMod1St = 20;
+	    
+	    #Output_Data.rMod1PacMeas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[44]))/10.0;
+	    #Output_Data.rMod1QacMeas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[45]))/10.0;
+	    
+	    #Output_Data.wMod1IOSt          := #Input_Data[46];
+	    #Output_Data.xMod1ThermLCLst    := #Output_Data.wMod1IOSt.%X6;
+	    #Output_Data.xMod1FanSt         := #Output_Data.wMod1IOSt.%X7;
+	    #Output_Data.xMod1AcMainSt      := #Output_Data.wMod1IOSt.%X8;
+	    #Output_Data.xMod1AcSoftChaSt   := #Output_Data.wMod1IOSt.%X9;
+	    #Output_Data.xMod1LCLst         := #Output_Data.wMod1IOSt.%X10;
+	    #Output_Data.xMod1DcSwitchSt    := #Output_Data.wMod1IOSt.%X11;
+	    
+	    #Output_Data.rMod1TempR1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[47]));
+	    #Output_Data.rMod1TempR2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[48]));
+	    #Output_Data.rMod1TempR3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[49]));
+	    #Output_Data.rMod1TempS1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[50]));
+	    #Output_Data.rMod1TempS2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[51]));
+	    #Output_Data.rMod1TempS3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[52]));
+	    #Output_Data.rMod1TempT1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[53]));
+	    #Output_Data.rMod1TempT2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[54]));
+	    #Output_Data.rMod1TempT3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[55]));
+	    
+	    #Output_Data.wMod2St        := WORD_TO_INT(#Input_Data[56]);
+	    #Output_Data.xMod2StopSt    := #Output_Data.wMod2St = 1;
+	    #Output_Data.xMod2ReadySt   := #Output_Data.wMod2St = 3;
+	    #Output_Data.xMod2MainAcSt  := #Output_Data.wMod2St = 5;
+	    #Output_Data.xMod2RunSt     := #Output_Data.wMod2St = 7;
+	    #Output_Data.xMod2FltSt     := #Output_Data.wMod2St = 20;
+	    
+	    #Output_Data.rMod2PacMeas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[57]))/10.0;
+	    #Output_Data.rMod2QacMeas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[58]))/10.0;
+	    
+	    #Output_Data.wMod2IOSt          := #Input_Data[59];
+	    #Output_Data.xMod2ThermLCLst    := #Output_Data.wMod2IOSt.%X6;
+	    #Output_Data.xMod2FanSt         := #Output_Data.wMod2IOSt.%X7;
+	    #Output_Data.xMod2AcMainSt      := #Output_Data.wMod2IOSt.%X8;
+	    #Output_Data.xMod2AcSoftChaSt   := #Output_Data.wMod2IOSt.%X9;
+	    #Output_Data.xMod2LCLst         := #Output_Data.wMod2IOSt.%X10;
+	    #Output_Data.xMod2DcSwitchSt    := #Output_Data.wMod2IOSt.%X11;
+	    
+	    #Output_Data.rMod2TempR1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[60]));
+	    #Output_Data.rMod2TempR2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[61]));
+	    #Output_Data.rMod2TempR3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[62]));
+	    #Output_Data.rMod2TempS1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[63]));
+	    #Output_Data.rMod2TempS2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[64]));
+	    #Output_Data.rMod2TempS3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[65]));
+	    #Output_Data.rMod2TempT1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[66]));
+	    #Output_Data.rMod2TempT2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[67]));
+	    #Output_Data.rMod2TempT3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[68]));
+	    
+	    #Output_Data.wMod3St        := WORD_TO_INT(#Input_Data[69]);
+	    #Output_Data.xMod3StopSt    := #Output_Data.wMod3St = 1;
+	    #Output_Data.xMod3ReadySt   := #Output_Data.wMod3St = 3;
+	    #Output_Data.xMod3MainAcSt  := #Output_Data.wMod3St = 5;
+	    #Output_Data.xMod3RunSt     := #Output_Data.wMod3St = 7;
+	    #Output_Data.xMod3FltSt     := #Output_Data.wMod3St = 20;
+	    
+	    #Output_Data.rMod3PacMeas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[70]))/10.0;
+	    #Output_Data.rMod3QacMeas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[71]))/10.0;
+	    
+	    #Output_Data.wMod3IOSt          := #Input_Data[72];
+	    #Output_Data.xMod3ThermLCLst    := #Output_Data.wMod3IOSt.%X6;
+	    #Output_Data.xMod3FanSt         := #Output_Data.wMod3IOSt.%X7;
+	    #Output_Data.xMod3AcMainSt      := #Output_Data.wMod3IOSt.%X8;
+	    #Output_Data.xMod3AcSoftChaSt   := #Output_Data.wMod3IOSt.%X9;
+	    #Output_Data.xMod3LCLst         := #Output_Data.wMod3IOSt.%X10;
+	    #Output_Data.xMod3DcSwitchSt    := #Output_Data.wMod3IOSt.%X11;
+	    
+	    #Output_Data.rMod3TempR1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[73]));
+	    #Output_Data.rMod3TempR2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[74]));
+	    #Output_Data.rMod3TempR3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[75]));
+	    #Output_Data.rMod3TempS1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[76]));
+	    #Output_Data.rMod3TempS2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[77]));
+	    #Output_Data.rMod3TempS3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[78]));
+	    #Output_Data.rMod3TempT1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[79]));
+	    #Output_Data.rMod3TempT2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[80]));
+	    #Output_Data.rMod3TempT3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[81]));
+	    
+	    #Output_Data.wMod4St        := WORD_TO_INT(#Input_Data[82]);
+	    #Output_Data.xMod4StopSt    := #Output_Data.wMod4St = 1;
+	    #Output_Data.xMod4ReadySt   := #Output_Data.wMod4St = 3;
+	    #Output_Data.xMod4MainAcSt  := #Output_Data.wMod4St = 5;
+	    #Output_Data.xMod4RunSt     := #Output_Data.wMod4St = 7;
+	    #Output_Data.xMod4FltSt     := #Output_Data.wMod4St = 20;
+	    
+	    #Output_Data.rMod4PacMeas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[83]))/10.0;
+	    #Output_Data.rMod4QacMeas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[84]))/10.0;
+	    
+	    #Output_Data.wMod4IOSt          := #Input_Data[85];
+	    #Output_Data.xMod4ThermLCLst    := #Output_Data.wMod4IOSt.%X6;
+	    #Output_Data.xMod4FanSt         := #Output_Data.wMod4IOSt.%X7;
+	    #Output_Data.xMod4AcMainSt      := #Output_Data.wMod4IOSt.%X8;
+	    #Output_Data.xMod4AcSoftChaSt   := #Output_Data.wMod4IOSt.%X9;
+	    #Output_Data.xMod4LCLst         := #Output_Data.wMod4IOSt.%X10;
+	    #Output_Data.xMod4DcSwitchSt    := #Output_Data.wMod4IOSt.%X11;
+	    
+	    #Output_Data.rMod4TempR1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[86]));
+	    #Output_Data.rMod4TempR2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[87]));
+	    #Output_Data.rMod4TempR3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[88]));
+	    #Output_Data.rMod4TempS1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[89]));
+	    #Output_Data.rMod4TempS2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[90]));
+	    #Output_Data.rMod4TempS3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[91]));
+	    #Output_Data.rMod4TempT1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[92]));
+	    #Output_Data.rMod4TempT2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[93]));
+	    #Output_Data.rMod4TempT3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[94]));
+	    
+	    #Output_Data.wMod5St        := WORD_TO_INT(#Input_Data[95]);
+	    #Output_Data.xMod5StopSt    := #Output_Data.wMod5St = 1;
+	    #Output_Data.xMod5ReadySt   := #Output_Data.wMod5St = 3;
+	    #Output_Data.xMod5MainAcSt  := #Output_Data.wMod5St = 5;
+	    #Output_Data.xMod5RunSt     := #Output_Data.wMod5St = 7;
+	    #Output_Data.xMod5FltSt     := #Output_Data.wMod5St = 20;
+	    
+	    #Output_Data.rMod5PacMeas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[96]))/10.0;
+	    #Output_Data.rMod5QacMeas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[97]))/10.0;
+	    
+	    #Output_Data.wMod5IOSt          := #Input_Data[98];
+	    #Output_Data.xMod5ThermLCLst    := #Output_Data.wMod5IOSt.%X6;
+	    #Output_Data.xMod5FanSt         := #Output_Data.wMod5IOSt.%X7;
+	    #Output_Data.xMod5AcMainSt      := #Output_Data.wMod5IOSt.%X8;
+	    #Output_Data.xMod5AcSoftChaSt   := #Output_Data.wMod5IOSt.%X9;
+	    #Output_Data.xMod5LCLst         := #Output_Data.wMod5IOSt.%X10;
+	    #Output_Data.xMod5DcSwitchSt    := #Output_Data.wMod5IOSt.%X11;
+	    
+	    #Output_Data.rMod5TempR1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[99]));
+	    #Output_Data.rMod5TempR2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[100]));
+	    #Output_Data.rMod5TempR3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[101]));
+	    #Output_Data.rMod5TempS1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[102]));
+	    #Output_Data.rMod5TempS2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[103]));
+	    #Output_Data.rMod5TempS3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[104]));
+	    #Output_Data.rMod5TempT1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[105]));
+	    #Output_Data.rMod5TempT2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[106]));
+	    #Output_Data.rMod5TempT3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[107]));
+	    
+	    #Output_Data.wMod6St        := WORD_TO_INT(#Input_Data[108]);
+	    #Output_Data.xMod6StopSt    := #Output_Data.wMod6St = 1;
+	    #Output_Data.xMod6ReadySt   := #Output_Data.wMod6St = 3;
+	    #Output_Data.xMod6MainAcSt  := #Output_Data.wMod6St = 5;
+	    #Output_Data.xMod6RunSt     := #Output_Data.wMod6St = 7;
+	    #Output_Data.xMod6FltSt     := #Output_Data.wMod6St = 20;
+	    
+	    #Output_Data.rMod6PacMeas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[109]))/10.0;
+	    #Output_Data.rMod6QacMeas   := INT_TO_REAL(WORD_TO_INT(#Input_Data[110]))/10.0;
+	    
+	    #Output_Data.wMod6IOSt          := #Input_Data[111];
+	    #Output_Data.xMod6ThermLCLst    := #Output_Data.wMod6IOSt.%X6;
+	    #Output_Data.xMod6FanSt         := #Output_Data.wMod6IOSt.%X7;
+	    #Output_Data.xMod6AcMainSt      := #Output_Data.wMod6IOSt.%X8;
+	    #Output_Data.xMod6AcSoftChaSt   := #Output_Data.wMod6IOSt.%X9;
+	    #Output_Data.xMod6LCLst         := #Output_Data.wMod6IOSt.%X10;
+	    #Output_Data.xMod6DcSwitchSt    := #Output_Data.wMod6IOSt.%X11;
+	    
+	    #Output_Data.rMod6TempR1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[112]));
+	    #Output_Data.rMod6TempR2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[113]));
+	    #Output_Data.rMod6TempR3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[114]));
+	    #Output_Data.rMod6TempS1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[115]));
+	    #Output_Data.rMod6TempS2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[116]));
+	    #Output_Data.rMod6TempS3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[117]));
+	    #Output_Data.rMod6TempT1Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[118]));
+	    #Output_Data.rMod6TempT2Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[119]));
+	    #Output_Data.rMod6TempT3Meas    := INT_TO_REAL(WORD_TO_INT(#Input_Data[120]));
+	    
+	END_REGION
+END_FUNCTION
+

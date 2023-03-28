@@ -1,0 +1,62 @@
+﻿FUNCTION "Init PE" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	        //PCS (PE) Modbus
+	        
+	        //Initialized for read a 120 register at 10 ms
+	        
+	        "PCS1".TCON10.InterfaceId := 64;
+	        "PCS1".TCON10.ID := 11;
+	        "PCS1".TCON10.RemoteAddress.ADDR[1] := 10;
+	        "PCS1".TCON10.RemoteAddress.ADDR[2] := 138;
+	        "PCS1".TCON10.RemoteAddress.ADDR[3] := 1;
+	        "PCS1".TCON10.RemoteAddress.ADDR[4] := 51;
+	        
+	        "PCS1".TCON10.ActiveEstablished := true;
+	        "PCS1".TCON10.ConnectionType := 11;
+	        "PCS1".TCON10.RemotePort := 502;
+	        
+	        //Initialized for read a writeble variables
+	        
+	        "PCS1".TCON.InterfaceId := 64;
+	        "PCS1".TCON.ID := 12;
+	        "PCS1".TCON.RemoteAddress.ADDR[1] := 10;
+	        "PCS1".TCON.RemoteAddress.ADDR[2] := 138;
+	        "PCS1".TCON.RemoteAddress.ADDR[3] := 1;
+	        "PCS1".TCON.RemoteAddress.ADDR[4] := 51;
+	        
+	        "PCS1".TCON.ActiveEstablished := true;
+	        "PCS1".TCON.ConnectionType := 11;
+	        "PCS1".TCON.RemotePort := 502;
+	        
+	        //Initialized for write a command
+	        
+	        "PCS1".TCONW.InterfaceId := 64;
+	        "PCS1".TCONW.ID := 13;
+	        "PCS1".TCONW.RemoteAddress.ADDR[1] := 10;
+	        "PCS1".TCONW.RemoteAddress.ADDR[2] := 138;
+	        "PCS1".TCONW.RemoteAddress.ADDR[3] := 1;
+	        "PCS1".TCONW.RemoteAddress.ADDR[4] := 51;
+	        
+	        "PCS1".TCONW.ActiveEstablished := true;
+	        "PCS1".TCONW.ConnectionType := 11;
+	        "PCS1".TCONW.RemotePort := 502;
+	        
+	        
+	        //MV SKID (PE) Modbus
+	        
+	        "MV SKID".TCON.InterfaceId := 64;
+	        "MV SKID".TCON.ID := 14;
+	        "MV SKID".TCON.RemoteAddress.ADDR[1] := 10;
+	        "MV SKID".TCON.RemoteAddress.ADDR[2] := 138;
+	        "MV SKID".TCON.RemoteAddress.ADDR[3] := 1;
+	        "MV SKID".TCON.RemoteAddress.ADDR[4] := 53;
+	        
+	        "MV SKID".TCON.ActiveEstablished := true;
+	        "MV SKID".TCON.ConnectionType := 11;
+	        "MV SKID".TCON.RemotePort := 502;
+	        
+END_FUNCTION
+

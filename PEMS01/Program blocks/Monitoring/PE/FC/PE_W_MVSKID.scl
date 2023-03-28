@@ -1,0 +1,31 @@
+﻿FUNCTION "PE_W_MVSKID" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Input_Data : "W_MV";
+   END_VAR
+
+   VAR_OUTPUT 
+      Output_Data : Array[1..125] of Word;
+   END_VAR
+
+
+BEGIN
+	REGION
+	    // 2022/01/24
+	END_REGION
+	
+	REGION
+	    
+	    #Output_Data[1].%X0 := #Input_Data.xCircBrk1OpenCmd;
+	    #Output_Data[1].%X1 := #Input_Data.xCircBrk1CloseCmd;
+	    #Output_Data[1].%X2 := #Input_Data.xLVCircBrk1OpenCmd;
+	    #Output_Data[1].%X3 := #Input_Data.xLVCircBrk1CloseCmd;
+	    #Output_Data[1].%X4 := #Input_Data.xCircBrk2OpenCmd;
+	    #Output_Data[1].%X5 := #Input_Data.xCircBrk2CloseCmd;
+	    #Output_Data[1].%X6 := #Input_Data.xLVCircBrk2OpenCmd;
+	    #Output_Data[1].%X7 := #Input_Data.xLVCircBrk2CloseCmd;
+	    
+	END_REGION
+END_FUNCTION
+

@@ -1,0 +1,55 @@
+﻿FUNCTION "SM2_S1_Boot" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      xBoot_Ok : Bool;
+      iT1 : S5Time;
+   END_VAR
+
+
+BEGIN
+	// **********************************************************
+	// *                   MANAGEMENT ACTION                    *
+	// **********************************************************
+	
+	REGION State Machine Status
+	    
+	    "SM2".xSsBootSt      := True;
+	    "SM2".xSsWarmUpSt    := False;
+	    "SM2".xSsReadySt     := False;
+	    "SM2".xSsStandBySt   := False;
+	    "SM2".xSsRunSt       := False;
+	    "SM2".xSsTestSt      := False;
+	    "SM2".xSsAutoMaintSt := False;
+	    "SM2".xSsStopSt      := False;
+	    "SM2".xSsFaultSt     := False;
+	    
+	    "SM2".iCountSS := 1;
+	    
+	END_REGION
+	
+	REGION Wait PLC Status From Off to On
+	    
+	// When the PLC switch to Run after 5sec "xBootSt = True" and the transition "T1 = True"
+	    
+	#iT1 := S_ODT(
+	    T_NO := 1,
+	    S := "SM2".xRunPlcSt,
+	    TV := S5T#5s,
+	    Q => "SM2".xBootSt);
+	END_REGION
+	
+	// **********************************************************
+	// *                 MANAGEMENT TRANSITION                  *
+	// **********************************************************
+	
+	// Transition from Boot to WarmUp
+	
+	IF "SM2".xBootSt
+	THEN
+	    "SM2".xT11 := True;
+	    "SM2".xBootSt := False;
+	END_IF;
+	
+END_FUNCTION
+

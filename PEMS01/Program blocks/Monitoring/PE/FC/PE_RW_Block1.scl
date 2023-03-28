@@ -1,0 +1,24 @@
+﻿FUNCTION "PE_RW_Block1" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      In_Data : Array[1..125] of Word;   // pcs
+   END_VAR
+
+   VAR_OUTPUT 
+      Out_Data : "RW_PE";
+   END_VAR
+
+
+BEGIN
+	REGION
+	    // 2022/01/24
+	END_REGION
+	
+	REGION
+	
+	    #Out_Data.wUserPswIns := #In_Data[1];
+	
+	END_REGION
+END_FUNCTION
+
