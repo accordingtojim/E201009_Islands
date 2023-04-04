@@ -41,7 +41,7 @@ BEGIN
 	    #rCrate := #rSystem_Current / (INT_TO_REAL(#iNom_Current_Rack) * INT_TO_REAL(WORD_TO_INT(#wNr_Rack_On)));
 	END_IF;
 	
-	(* Computing SOC available for charge and discharge *)
+	(* Computing SOC available for charge e discharge *)
 	
 	#rSOC_Avl_Ch := #rSOC_Max - #rSystem_SOC;
 	#rSOC_Avl_Dh := #rSystem_SOC - #rSOC_Min;

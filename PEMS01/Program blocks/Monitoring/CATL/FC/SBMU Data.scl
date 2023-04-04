@@ -43,12 +43,10 @@ BEGIN
 	    #strOutBR.iVmodMaxPos   := #arrInput[49].%B1;
 	    #strOutBR.iVcellMinPos  := #arrInput[50].%B0;
 	    #strOutBR.iVmodMinPos   := #arrInput[50].%B1;
-	    #strOutBR.iTcellMaxPos  := #arrInput[51].%B0;
-	    #strOutBR.iTmodMaxPos   := #arrInput[51].%B1;
-	    #strOutBR.iTcellMinPos  := #arrInput[52].%B0;
-	    #strOutBR.iTmodMinPos   := #arrInput[52].%B1;
+	    #strOutBR.iTmodMaxPos   := WORD_TO_INT(#arrInput[51]);
+	    #strOutBR.iTmodMinPos   := WORD_TO_INT(#arrInput[52]);
 	    
-	    #strOutBR.rVcellSumMeas := INT_TO_REAL(WORD_TO_INT(#arrInput[56])) / 1000.0;
+	    #strOutBR.rVcellSumMeas := INT_TO_REAL(WORD_TO_INT(#arrInput[56])) / 10.0;
 	    
 	    #strOutTMS.xPwrOffCmd   := #arrInput[73] = 0;
 	    #strOutTMS.xCoolingCmd  := #arrInput[73] = 1;
