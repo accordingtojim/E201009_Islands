@@ -1,0 +1,71 @@
+﻿FUNCTION "PE_W_Block_GEN" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      iType : Int;
+      In_Data : "W_PE";   // pcs
+   END_VAR
+
+   VAR_OUTPUT 
+      Out_Data : Array[1..125] of Word;
+   END_VAR
+
+
+BEGIN
+	//1:USER PASSWORD
+	//2:P CONTROL MODE AND Q CONTROL MODE
+	//3:P REF
+	//4:Q REF
+	
+	CASE #iType OF
+	    1:
+	        #Out_Data[1] := #In_Data."wUserPswIns";
+	        ;
+	    2:
+	        #Out_Data[1] := INT_TO_WORD(#In_Data."iModePctrlCmd");
+	        #Out_Data[2] := INT_TO_WORD(#In_Data."iModeQctrlCmd");
+	        ;
+	    3:
+	        #Out_Data[1] := INT_TO_WORD(REAL_TO_INT(#In_Data.rPacRef * 100.0));
+	        ;
+	    4:
+	        #Out_Data[1] := INT_TO_WORD(REAL_TO_INT(#In_Data.rQacRef * 100.0));
+	    5:
+	        IF #In_Data.xStartCmd = 1 THEN
+	            #Out_Data[1] := BOOL_TO_WORD(#In_Data.xStartCmd);
+	        ELSE
+	            #Out_Data[1] := 0;
+	        END_IF;
+	    6:
+	        IF #In_Data.xStopCmd = 1 THEN
+	            #Out_Data[1] := BOOL_TO_WORD(#In_Data.xStopCmd);
+	        ELSE
+	            #Out_Data[1] := 0;
+	        END_IF;
+	    7:
+	        IF #In_Data.xClearFltCmd = 1 THEN
+	            #Out_Data[1] := BOOL_TO_WORD(#In_Data.xClearFltCmd);
+	        ELSE
+	            #Out_Data[1] := 0;
+	        END_IF;
+	    8:
+	        IF #In_Data.xEnableCmd = 1 THEN
+	            #Out_Data[1] := BOOL_TO_WORD(#In_Data.xEnableCmd);
+	        ELSE
+	            #Out_Data[1] := 0;
+	        END_IF;
+	    9:
+	        IF #In_Data.xEmeStopCmd = 1 THEN
+	            #Out_Data[1] := BOOL_TO_WORD(#In_Data.xEmeStopCmd);
+	        ELSE
+	            #Out_Data[1] := 0;
+	        END_IF;
+	    10:
+	        #Out_Data[1] := INT_TO_WORD(REAL_TO_INT(#In_Data.iWatchDog));
+	END_CASE;
+	
+	
+	
+	
+END_FUNCTION
+

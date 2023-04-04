@@ -1,0 +1,96 @@
+﻿FUNCTION "SM2_S3_Ready" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      xSSysReadySt : Bool;
+   END_VAR
+
+
+BEGIN
+	// **********************************************************
+	// *                   MANAGEMENT ACTION                    *
+	// **********************************************************
+	
+	REGION State Machine Status
+	    
+	    "SM2".xSsBootSt      := False;
+	    "SM2".xSsWarmUpSt    := False;
+	    "SM2".xSsReadySt     := True;
+	    "SM2".xSsStandBySt   := False;
+	    "SM2".xSsRunSt       := False;
+	    "SM2".xSsTestSt      := False;
+	    "SM2".xSsAutoMaintSt := False;
+	    "SM2".xSsStopSt      := False;
+	    "SM2".xSsFaultSt     := False;
+	        
+	    "SM2".iCountSS := 3;
+	    
+	END_REGION
+	
+	REGION Ready Condition
+	    
+	    IF "SM2".xReadyCondSt AND "SM2".xEnbSSysSt      //With ready condition and Subsystem enabled from HMI the subsystem is ready
+	    THEN
+	        #xSSysReadySt := True;
+	    END_IF;
+	    
+	END_REGION
+	
+	REGION Command Battery Close
+	    
+	    IF #xSSysReadySt AND ("SM2".xStandByCmd OR "SM2".xRunCmd)       //With subsystem ready and standby or run command send close command to the battery
+	    THEN
+	        "SM2".xBattCloseCmd := True;
+	    END_IF;
+	    
+	END_REGION
+	
+	REGION Command Enable PCS
+	    
+	    IF "SM2".xBattCloseSt AND "SM2".xMVbreakerCloseSt       //When the battery are closed and MV circuit breaker close send enable command to the PCS
+	    THEN
+	        "SM2".xPCSenbCmd := True;
+	    END_IF;
+	END_REGION
+	
+	
+	// **********************************************************
+	// *                 MANAGEMENT TRANSITION                  *
+	// **********************************************************
+	
+	// Transition from Ready to StandBy
+	
+	IF "SM2".xBattCloseSt AND "SM2".xPCSreadySt     //With battery closed and PCS in ready condition go on standby state
+	THEN
+	    "SM2".xT31 := True;
+	    #xSSysReadySt := False;
+	END_IF;
+	
+	// Transition from Ready to Stop
+	
+	IF "SM2".xStopCmd AND False     //From ready status never go in stop state
+	THEN
+	    "SM2".xT32 := True;
+	END_IF;
+	
+	// Transition from Ready to Fault
+	
+	IF "SM2".xFltSt     //With subsystem in fault go to the fault state
+	THEN
+	    "SM2".xT33 := True;
+	END_IF;
+	
+	// Transition from Ready to Test
+	
+	IF "SM2".xTestCmd       //With test command from HMI go to the test state
+	THEN
+	    "SM2".xT34 := True;
+	END_IF;
+	
+	// Reset Transition
+	
+	"SM2".xT21   := False;
+	"SM2".xT61   := False;
+	
+END_FUNCTION
+

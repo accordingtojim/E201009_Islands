@@ -1,0 +1,21 @@
+﻿FUNCTION "PE_W_Block2_old" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      In_Data : "W_PE";   // udt. Samsung Data rack 1
+   END_VAR
+
+   VAR_OUTPUT 
+      Out_Data : Array[1..125] of Word;
+   END_VAR
+
+
+BEGIN
+	//27/03/2023
+	
+	REGION
+	    #Out_Data[1]    := INT_TO_WORD(#In_Data."iModePctrlCmd");
+	    #Out_Data[2]    := INT_TO_WORD(#In_Data."iModeQctrlCmd");
+	END_REGION
+END_FUNCTION
+

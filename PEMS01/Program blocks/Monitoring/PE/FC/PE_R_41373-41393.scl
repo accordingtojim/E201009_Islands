@@ -1,0 +1,43 @@
+﻿FUNCTION "PE_R_41373-41393" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Input_Data : Array[1..125] of Word;
+   END_VAR
+
+   VAR_OUTPUT 
+      Output_Data : "R_PE";
+   END_VAR
+
+   VAR_TEMP 
+      "DWord" : DWord;
+   END_VAR
+
+
+BEGIN
+	
+	// 23/03/2023
+	REGION
+	    #Output_Data.iInputPower_1 := WORD_TO_INT(#Input_Data[1]);
+	    #Output_Data.iInputPower_2 := WORD_TO_INT(#Input_Data[2]);
+	    #Output_Data.iInputPower_3 := WORD_TO_INT(#Input_Data[3]);
+	    #Output_Data.iInputPower_4 := WORD_TO_INT(#Input_Data[4]);
+	    #Output_Data.rI_DC1 := INT_TO_REAL(WORD_TO_INT(#Input_Data[5]));
+	    #Output_Data.rI_DC2 := INT_TO_REAL(WORD_TO_INT(#Input_Data[6]));
+	    #Output_Data.rI_DC3 := INT_TO_REAL(WORD_TO_INT(#Input_Data[7]));
+	    #Output_Data.rI_DC4 := INT_TO_REAL(WORD_TO_INT(#Input_Data[8]));
+	    #Output_Data.rDCvoltageBus_1 := INT_TO_REAL(WORD_TO_INT(#Input_Data[9]));
+	    #Output_Data.rDCvoltageBus_2 := INT_TO_REAL(WORD_TO_INT(#Input_Data[10]));
+	    #Output_Data.rDCvoltageBus_3 := INT_TO_REAL(WORD_TO_INT(#Input_Data[11]));
+	    #Output_Data.rDCvoltageBus_4 := INT_TO_REAL(WORD_TO_INT(#Input_Data[12]));
+	    #Output_Data.rDCvoltageExt_1 := INT_TO_REAL(WORD_TO_INT(#Input_Data[13]));
+	    #Output_Data.rDCvoltageExt_2 := INT_TO_REAL(WORD_TO_INT(#Input_Data[14]));
+	    #Output_Data.rDCvoltageExt_3 := INT_TO_REAL(WORD_TO_INT(#Input_Data[15]));
+	    #Output_Data.rDCvoltageExt_4 := INT_TO_REAL(WORD_TO_INT(#Input_Data[16]));
+	    #Output_Data.rDCvoltageLast_1 := INT_TO_REAL(WORD_TO_INT(#Input_Data[17]));
+	    #Output_Data.rDCvoltageLast_2 := INT_TO_REAL(WORD_TO_INT(#Input_Data[18]));
+	    #Output_Data.rDCvoltageLast_3 := INT_TO_REAL(WORD_TO_INT(#Input_Data[19]));
+	    #Output_Data.rDCvoltageLast_4 := INT_TO_REAL(WORD_TO_INT(#Input_Data[20]));
+	END_REGION
+END_FUNCTION
+

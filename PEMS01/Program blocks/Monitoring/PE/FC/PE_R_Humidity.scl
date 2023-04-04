@@ -1,0 +1,27 @@
+﻿FUNCTION "PE_R_Humidity" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Input_Data : Array[1..125] of Word;
+   END_VAR
+
+   VAR_OUTPUT 
+      Output_Data : "R_PE";
+   END_VAR
+
+   VAR_TEMP 
+      "DWord" : DWord;
+   END_VAR
+
+
+BEGIN
+	
+	// 23/03/2023
+	REGION
+	    #Output_Data.Module_1.usiHumidity := WORD_TO_USINT(#Input_Data[1]);
+	    #Output_Data.Module_2.usiHumidity := WORD_TO_USINT(#Input_Data[2]);
+	    #Output_Data.Module_3.usiHumidity := WORD_TO_USINT(#Input_Data[3]);
+	    #Output_Data.Module_4.usiHumidity := WORD_TO_USINT(#Input_Data[4]);
+	END_REGION
+END_FUNCTION
+

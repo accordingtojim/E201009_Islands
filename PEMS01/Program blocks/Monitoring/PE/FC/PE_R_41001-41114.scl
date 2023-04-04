@@ -1,0 +1,41 @@
+﻿FUNCTION "PE_R_41001-41114" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Input_Data : Array[1..125] of Word;
+   END_VAR
+
+   VAR_OUTPUT 
+      Output_Data : "R_PE";
+   END_VAR
+
+   VAR_TEMP 
+      "DWord" : DWord;
+   END_VAR
+
+
+BEGIN
+	
+	// 23/03/2023
+	REGION
+	    #Output_Data.diCurrentFault := WORD_TO_UINT(#Input_Data[1]);
+	    #Output_Data.diCurrentFaultModule := WORD_TO_UINT(#Input_Data[2]);
+	    #Output_Data.diCurrentWarning := WORD_TO_UINT(#Input_Data[3]);
+	    #Output_Data.iCurrentStatus := WORD_TO_INT(#Input_Data[4]);
+	    #Output_Data.xStartCondition_f := WORD_TO_BOOL(#Input_Data[41]);
+	    #Output_Data.xStartCondition_Vdc := WORD_TO_BOOL(#Input_Data[42]);
+	    #Output_Data.xStartCondition_MVcell := WORD_TO_BOOL(#Input_Data[43]);
+	    #Output_Data.xStartCondition_P := WORD_TO_BOOL(#Input_Data[44]);
+	    #Output_Data.bStatusDspRJ13 := WORD_TO_BYTE(#Input_Data[84]);
+	    #Output_Data.bStatusDspRJ14 := WORD_TO_BYTE(#Input_Data[85]);
+	    #Output_Data.bStatusDspRJ15 := WORD_TO_BYTE(#Input_Data[86]);
+	    #Output_Data.bStatusDspRJ16 := WORD_TO_BYTE(#Input_Data[87]);
+	    #Output_Data.bStatusDspRJ20 := WORD_TO_BYTE(#Input_Data[90]);
+	    #Output_Data.iMV_PT100_1 := WORD_TO_INT(#Input_Data[109]);
+	    #Output_Data.iMV_PT100_2 := WORD_TO_INT(#Input_Data[110]);
+	    #Output_Data.iMV_PT100_3 := WORD_TO_INT(#Input_Data[111]);
+	    #Output_Data.iP_control := WORD_TO_INT(#Input_Data[113]);
+	    #Output_Data.iQ_control := WORD_TO_INT(#Input_Data[114]);
+	END_REGION
+END_FUNCTION
+

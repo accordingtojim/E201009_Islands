@@ -1,0 +1,47 @@
+﻿FUNCTION "MBMU Data" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      arrInput : Array[1..125] of Word;
+   END_VAR
+
+   VAR_OUTPUT 
+      strOutput : "BMS_BB";
+   END_VAR
+
+
+BEGIN
+	REGION
+	    //20210423 First Release
+	END_REGION
+	
+	REGION MBMU Data
+	    
+	    #strOutput.wWarn1 := #arrInput[1];
+	    #strOutput.wWarn2 := #arrInput[2];
+	    #strOutput.wWarn3 := #arrInput[3];
+	    #strOutput.wWarn4 := #arrInput[4];
+	    
+	    #strOutput.xInitSt      := #arrInput[17] = 0;
+	    #strOutput.xNormOpSt    := #arrInput[17] = 1;
+	    #strOutput.xFullChaSt   := #arrInput[17] = 2;
+	    #strOutput.xFullDschSt  := #arrInput[17] = 3;
+	    #strOutput.xWarnSt      := #arrInput[17] = 4;
+	    #strOutput.xFltSt       := #arrInput[17] = 5;
+	    
+	    #strOutput.rVdcMeas         := INT_TO_REAL(WORD_TO_INT(#arrInput[33])) / 10.0;
+	    #strOutput.rIdcMeas         := INT_TO_REAL(WORD_TO_INT(#arrInput[34])) - 20000.0;
+	    #strOutput.rSOCmeas         := INT_TO_REAL(WORD_TO_INT(#arrInput[35])) / 10.0;
+	    #strOutput.rSOHmeas         := INT_TO_REAL(WORD_TO_INT(#arrInput[36])) / 10.0;
+	    #strOutput.rVcellMaxMeas    := INT_TO_REAL(WORD_TO_INT(#arrInput[37])) / 1000.0;
+	    #strOutput.rVcellMinMeas    := INT_TO_REAL(WORD_TO_INT(#arrInput[38])) / 1000.0;
+	    #strOutput.rVcellAvgMeas    := INT_TO_REAL(WORD_TO_INT(#arrInput[39])) / 1000.0;
+	    #strOutput.iTcellMaxMeas    := WORD_TO_INT(#arrInput[40]) - 50;
+	    #strOutput.iTcellMinMeas    := WORD_TO_INT(#arrInput[41]) - 50;
+	    #strOutput.iTcellAvgMeas    := WORD_TO_INT(#arrInput[42]) - 50;
+	    #strOutput.rIchaLim         := INT_TO_REAL(WORD_TO_INT(#arrInput[43])) - 20000.0;
+	    #strOutput.rIdschLim        := INT_TO_REAL(WORD_TO_INT(#arrInput[44])) - 20000.0;
+	    
+	END_REGION
+END_FUNCTION
+

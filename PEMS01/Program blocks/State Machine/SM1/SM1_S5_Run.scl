@@ -1,0 +1,66 @@
+﻿FUNCTION "SM1_S5_Run" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	// **********************************************************
+	// *                   MANAGEMENT ACTION                    *
+	// **********************************************************
+	
+	REGION State Machine Status
+	    
+	    "SM1".xSsBootSt      := False;
+	    "SM1".xSsWarmUpSt    := False;
+	    "SM1".xSsReadySt     := False;
+	    "SM1".xSsStandBySt   := False;
+	    "SM1".xSsRunSt       := True;
+	    "SM1".xSsTestSt      := False;
+	    "SM1".xSsAutoMaintSt := False;
+	    "SM1".xSsStopSt      := False;
+	    "SM1".xSsFaultSt     := False;
+	    
+	    "SM1".iCountSS := 5;
+	    
+	END_REGION
+	
+	REGION StandBy Command
+	    
+	    IF "SM1".xStandByCmd        //With standby command send stop command to the PCS
+	    THEN
+	        "SM1".xPCSrunCmd := False;
+	    END_IF;
+	    
+	END_REGION
+	
+	
+	// **********************************************************
+	// *                 MANAGEMENT TRANSITION                  *
+	// **********************************************************
+	
+	// Transition from Run to StandBy
+	
+	IF "SM1".xStandByCmd AND "SM1".xPCSreadySt      //With standby command e PCS in ready return to standby state
+	THEN
+	    "SM1".xT51 := True;
+	END_IF;
+	
+	// Transition from Run to Stop
+	
+	IF "SM1".xStopCmd OR NOT "SM1".xEnbSSysSt       //With stop command or subsystem not enabled go to stop state
+	THEN
+	    "SM1".xT52 := True;
+	END_IF;
+	
+	// Transition from Run to Fault
+	
+	IF "SM1".xFltSt     //With subsystem in fault go to the fault state
+	THEN
+	    "SM1".xT53 := True;
+	END_IF;
+	
+	// Reset Transition
+	
+	"SM1".xT41 := False;
+	
+END_FUNCTION
+

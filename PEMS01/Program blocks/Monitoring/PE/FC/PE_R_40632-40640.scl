@@ -1,0 +1,31 @@
+﻿FUNCTION "PE_R_40632-40640" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Input_Data : Array[1..125] of Word;
+   END_VAR
+
+   VAR_OUTPUT 
+      Output_Data : "R_PE";
+   END_VAR
+
+   VAR_TEMP 
+      "DWord" : DWord;
+   END_VAR
+
+
+BEGIN
+	
+	// 23/03/2023
+	REGION
+	    #Output_Data.iAcSwitchStatus := WORD_TO_INT(#Input_Data[1]);
+	    #Output_Data.iMVswitchStatus := WORD_TO_INT(#Input_Data[2]);
+	    #Output_Data.iMVgenswitchStatus := WORD_TO_INT(#Input_Data[2]);
+	    #Output_Data.iMVearthswitchStatus := WORD_TO_INT(#Input_Data[2]);
+	    #Output_Data.iDC1switchStatus := WORD_TO_INT(#Input_Data[2]);
+	    #Output_Data.iDC2switchStatus := WORD_TO_INT(#Input_Data[2]);
+	    #Output_Data.iDC3switchStatus := WORD_TO_INT(#Input_Data[2]);
+	    #Output_Data.iDC4switchStatus := WORD_TO_INT(#Input_Data[44]);
+	END_REGION
+END_FUNCTION
+

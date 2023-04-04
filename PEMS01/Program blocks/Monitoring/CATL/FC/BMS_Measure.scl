@@ -1,0 +1,66 @@
+﻿FUNCTION "BMS_Measure" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      wNr_Rack_On : Word;
+      rSystem_SOC : Real;
+      rSystem_Voltage : Real;
+      rSystem_Current : Real;
+      rSystem_SOH : Real;
+      rSOC_Max : Real;
+      rSOC_Min : Real;
+      rNom_Energy_Rack : Real;
+      iNom_Current_Rack : Int;
+   END_VAR
+
+   VAR_OUTPUT 
+      rNom_Energy_Bank : Real;
+      rPbank : Real;
+      rCrate : Real;
+      rSOC_Avl_Ch : Real;
+      rSOC_Avl_Dh : Real;
+      rEnergy_Avl_Ch : Real;
+      rEnergy_Avl_Dh : Real;
+      diTime_End_Ch : DInt;
+      diTime_End_Dh : DInt;
+   END_VAR
+
+
+BEGIN
+	(* Computing Nominal Energy of Battery Bank *)
+	
+	#rNom_Energy_Bank := #rNom_Energy_Rack * INT_TO_REAL(WORD_TO_INT(#wNr_Rack_On));// * (#rSystem_SOH / 100.0);
+	
+	(* Computing DC Power *)
+	
+	#rPbank := #rSystem_Voltage * #rSystem_Current;
+	
+	(* Computing Crate of Battery Bank *)
+	
+	IF (INT_TO_REAL(#iNom_Current_Rack) * INT_TO_REAL(WORD_TO_INT(#wNr_Rack_On))) <> 0.0 THEN
+	    #rCrate := #rSystem_Current / (INT_TO_REAL(#iNom_Current_Rack) * INT_TO_REAL(WORD_TO_INT(#wNr_Rack_On)));
+	END_IF;
+	
+	(* Computing SOC available for charge and discharge *)
+	
+	#rSOC_Avl_Ch := #rSOC_Max - #rSystem_SOC;
+	#rSOC_Avl_Dh := #rSystem_SOC - #rSOC_Min;
+	
+	(* Computing Energy Available for charge e discharge *)
+	
+	#rEnergy_Avl_Ch := (#rSOC_Avl_Ch / 100.0) * #rNom_Energy_Bank;
+	#rEnergy_Avl_Dh := (#rSOC_Avl_Dh / 100.0) * #rNom_Energy_Bank;
+	
+	(* Computing end time of charge *)
+	
+	IF #rPbank <> 0.0 THEN
+	    #diTime_End_Ch := REAL_TO_DINT((#rEnergy_Avl_Ch * 3600.0) / ABS(#rPbank));
+	END_IF;
+	
+	(* Computing end time of discharge *)
+	
+	IF #rPbank <> 0.0 THEN
+	    #diTime_End_Dh := REAL_TO_DINT((#rEnergy_Avl_Dh * 3600.0) / ABS(#rPbank));
+	END_IF;
+END_FUNCTION
+

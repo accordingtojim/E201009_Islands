@@ -1,0 +1,68 @@
+﻿FUNCTION "SM2_S6_Test" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	// **********************************************************
+	// *                   MANAGEMENT ACTION                    *
+	// **********************************************************
+	
+	REGION State Machine Status
+	    
+	    "SM2".xSsBootSt := False;
+	    "SM2".xSsWarmUpSt := False;
+	    "SM2".xSsReadySt := False;
+	    "SM2".xSsStandBySt := False;
+	    "SM2".xSsRunSt := False;
+	    "SM2".xSsTestSt := True;
+	    "SM2".xSsAutoMaintSt := False;
+	    "SM2".xSsStopSt := False;
+	    "SM2".xSsFaultSt := False;
+	    
+	    "SM2".iCountSS := 6;
+	    
+	END_REGION
+	
+	"SM2".xPCSrunCmd := False;      //All command in this state are not necessary but only for safety
+	
+	REGION PCS Enable Off
+	    
+	    IF "SM2".xPCSreadySt
+	    THEN
+	        "SM2".xPCSenbCmd := False;
+	    END_IF;
+	END_REGION
+	
+	REGION Command Open Battery
+	    
+	    IF "SM2".xPCSstopSt
+	    THEN
+	        "SM2".xBattCloseCmd := False;
+	    END_IF;
+	END_REGION
+	
+	
+	// **********************************************************
+	// *                 MANAGEMENT TRANSITION                  *
+	// **********************************************************
+	
+	// Transition from Test to Ready
+	
+	IF NOT "SM2".xTestCmd       //Without test command return to ready state
+	THEN
+	    "SM2".xT61 := True;
+	END_IF;
+	
+	// Transition from Test to Fault
+	
+	IF "SM2".xFltSt     //With subsystem in fault go to the fault state
+	THEN
+	    "SM2".xT62 := True;
+	END_IF;
+	
+	// Reset Transition
+	
+	"SM2".xT34 := False;
+	
+END_FUNCTION
+

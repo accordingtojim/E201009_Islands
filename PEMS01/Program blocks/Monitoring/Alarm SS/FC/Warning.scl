@@ -1,0 +1,48 @@
+﻿FUNCTION "Warning" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      X0 : Bool;
+      X1 : Bool;
+      X2 : Bool;
+      X3 : Bool;
+      X4 : Bool;
+      X5 : Bool;
+      X6 : Bool;
+      X7 : Bool;
+      X8 : Bool;
+      X9 : Bool;
+      X10 : Bool;
+      X11 : Bool;
+      X12 : Bool;
+      X13 : Bool;
+      X14 : Bool;
+      X15 : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Out : Word;
+   END_VAR
+
+
+BEGIN
+	
+	#Out.%X0 := #X0;
+	#Out.%X1 := #X1;
+	#Out.%X2 := #X2;
+	#Out.%X3 := #X3;
+	#Out.%X4 := #X4;
+	#Out.%X5 := #X5;
+	#Out.%X6 := #X6;
+	#Out.%X7 := #X7;
+	#Out.%X8 := #X8;
+	#Out.%X9 := #X9;
+	#Out.%X10 := #X10;
+	#Out.%X11 := #X11;
+	#Out.%X12 := #X12;
+	#Out.%X13 := #X13;
+	#Out.%X14 := #X14;
+	#Out.%X15 := #X15;
+	
+END_FUNCTION
+

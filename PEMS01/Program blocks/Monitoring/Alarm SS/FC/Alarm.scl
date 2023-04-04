@@ -1,0 +1,117 @@
+﻿FUNCTION "Alarm" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      X0 : Bool;
+      X1 : Bool;
+      X2 : Bool;
+      X3 : Bool;
+      X4 : Bool;
+      X5 : Bool;
+      X6 : Bool;
+      X7 : Bool;
+      X8 : Bool;
+      X9 : Bool;
+      X10 : Bool;
+      X11 : Bool;
+      X12 : Bool;
+      X13 : Bool;
+      X14 : Bool;
+      X15 : Bool;
+      Reset : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Out : Word;
+   END_VAR
+
+
+BEGIN
+	
+	IF #X0
+	    THEN
+	    #Out.%X0 := True;
+	END_IF;
+	
+	IF #X1
+	THEN
+	    #Out.%X1 := True;
+	END_IF;
+	
+	IF #X2
+	THEN
+	    #Out.%X2 := True;
+	END_IF;
+	
+	IF #X3
+	THEN
+	    #Out.%X3 := True;
+	END_IF;
+	
+	IF #X4
+	THEN
+	    #Out.%X4 := True;
+	END_IF;
+	
+	IF #X5
+	THEN
+	    #Out.%X5 := True;
+	END_IF;
+	
+	IF #X6
+	THEN
+	    #Out.%X6 := True;
+	END_IF;
+	
+	IF #X7
+	THEN
+	    #Out.%X7 := True;
+	END_IF;
+	
+	IF #X8
+	THEN
+	    #Out.%X8 := True;
+	END_IF;
+	
+	IF #X9
+	THEN
+	    #Out.%X9 := True;
+	END_IF;
+	
+	IF #X10
+	THEN
+	    #Out.%X10 := True;
+	END_IF;
+	
+	IF #X11
+	THEN
+	    #Out.%X11 := True;
+	END_IF;
+	
+	IF #X12
+	THEN
+	    #Out.%X12 := True;
+	END_IF;
+	
+	IF #X13
+	THEN
+	    #Out.%X13 := True;
+	END_IF;
+	
+	IF #X14
+	THEN
+	    #Out.%X14 := True;
+	END_IF;
+	
+	IF #X15
+	THEN
+	    #Out.%X15 := True;
+	END_IF;
+	
+	IF #Reset
+	THEN
+	    #Out := 0;
+	END_IF;
+	
+END_FUNCTION
+

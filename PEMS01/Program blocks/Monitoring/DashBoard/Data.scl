@@ -1,0 +1,620 @@
+﻿FUNCTION "Data" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      reminder : Bool;
+   END_VAR
+
+
+BEGIN
+	
+	// Data Battery Bank 1
+	#reminder := "Reminder".x1; // da aggiungere rack 11-12
+	"DashBoard".BB1.iNBRConn    := "BMS1".BB.iNBRconnectCount;
+	"DashBoard".BB1.iTcellAvg   := "BMS1".BB.iTcellAvgMeas;
+	"DashBoard".BB1.iTcellMax   := "BMS1".BB.iTcellMaxMeas;
+	"DashBoard".BB1.iTcellMin   := "BMS1".BB.iTcellMinMeas;
+	"DashBoard".BB1.rIdc        := "BMS1".BB.rIdcMeas;
+	"DashBoard".BB1.rPdc        := ("BMS1".BB.rVdcMeas * "BMS1".BB.rIdcMeas);
+	"DashBoard".BB1.rSOC        := "BMS1".BB.rSOCmeas;
+	"DashBoard".BB1.rSOH        := "BMS1".BB.rSOHmeas;
+	"DashBoard".BB1.rVcellAvg   := "BMS1".BB.rVcellAvgMeas;
+	"DashBoard".BB1.rVcellMax   := "BMS1".BB.rVcellMaxMeas;
+	"DashBoard".BB1.rVcellMin   := "BMS1".BB.rVcellMinMeas;
+	"DashBoard".BB1.rVdc        := "BMS1".BB.rVdcMeas;
+	
+	// Data BB1 Rack 1
+	
+	"DashBoard".BB1BR1.iTamb        := "BMS1".BR01.iTambMeas;
+	"DashBoard".BB1BR1.iTcellAvg    := "BMS1".BR01.iTcellAvgMeas;
+	"DashBoard".BB1BR1.iTcellMax    := "BMS1".BR01.iTcellMaxMeas;
+	"DashBoard".BB1BR1.iTmodMaxPos := "BMS1".BR01.iTmodMaxPos;
+	"DashBoard".BB1BR1.iTcellMin    := "BMS1".BR01.iTcellMinMeas;
+	"DashBoard".BB1BR1.iTmodMinPos := "BMS1".BR01.iTmodMinPos;
+	"DashBoard".BB1BR1.iTempSet     := "BMS1".TMS01.iTempSet;
+	"DashBoard".BB1BR1.iTrackIn     := "BMS1".BR01.iTrackInMeas;
+	"DashBoard".BB1BR1.iTrackOut    := "BMS1".BR01.iTrackOutMeas;
+	"DashBoard".BB1BR1.iVmodMaxPos := "BMS1".BR01.iVmodMaxPos;
+	"DashBoard".BB1BR1.iVmodMinPos := "BMS1".BR01.iVmodMinPos;
+	"DashBoard".BB1BR1.rIdc         := "BMS1".BR01.rIdcMeas;
+	"DashBoard".BB1BR1.rSOC         := "BMS1".BR01.rSOCmeas;
+	"DashBoard".BB1BR1.rSOH         := "BMS1".BR01.rSOHmeas;
+	"DashBoard".BB1BR1.rVcellAvg    := "BMS1".BR01.rVcellAvgMeas;
+	"DashBoard".BB1BR1.rVcellMax    := "BMS1".BR01.rVcellMaxMeas;
+	"DashBoard".BB1BR1.rVcellMin    := "BMS1".BR01.rVcellMinMeas;
+	"DashBoard".BB1BR1.rVdc         := "BMS1".BR01.rVdcMeas;
+	
+	// Data BB1 Rack 2
+	
+	"DashBoard".BB1BR2.iTamb        := "BMS1".BR02.iTambMeas;
+	"DashBoard".BB1BR2.iTcellAvg    := "BMS1".BR02.iTcellAvgMeas;
+	"DashBoard".BB1BR2.iTcellMax    := "BMS1".BR02.iTcellMaxMeas;
+	"DashBoard".BB1BR2.iTmodMaxPos := "BMS1".BR02.iTmodMaxPos;
+	"DashBoard".BB1BR2.iTcellMin    := "BMS1".BR02.iTcellMinMeas;
+	"DashBoard".BB1BR2.iTmodMinPos := "BMS1".BR02.iTmodMinPos;
+	"DashBoard".BB1BR2.iTempSet     := "BMS1".TMS02.iTempSet;
+	"DashBoard".BB1BR2.iTrackIn     := "BMS1".BR02.iTrackInMeas;
+	"DashBoard".BB1BR2.iTrackOut    := "BMS1".BR02.iTrackOutMeas;
+	"DashBoard".BB1BR2.iVmodMaxPos := "BMS1".BR02.iVmodMaxPos;
+	"DashBoard".BB1BR2.iVmodMinPos := "BMS1".BR02.iVmodMinPos;
+	"DashBoard".BB1BR2.rIdc         := "BMS1".BR02.rIdcMeas;
+	"DashBoard".BB1BR2.rSOC         := "BMS1".BR02.rSOCmeas;
+	"DashBoard".BB1BR2.rSOH         := "BMS1".BR02.rSOHmeas;
+	"DashBoard".BB1BR2.rVcellAvg    := "BMS1".BR02.rVcellAvgMeas;
+	"DashBoard".BB1BR2.rVcellMax    := "BMS1".BR02.rVcellMaxMeas;
+	"DashBoard".BB1BR2.rVcellMin    := "BMS1".BR02.rVcellMinMeas;
+	"DashBoard".BB1BR2.rVdc         := "BMS1".BR02.rVdcMeas;
+	
+	// Data BB1 Rack 3
+	
+	"DashBoard".BB1BR3.iTamb        := "BMS1".BR03.iTambMeas;
+	"DashBoard".BB1BR3.iTcellAvg    := "BMS1".BR03.iTcellAvgMeas;
+	"DashBoard".BB1BR3.iTcellMax    := "BMS1".BR03.iTcellMaxMeas;
+	"DashBoard".BB1BR3.iTmodMaxPos := "BMS1".BR03.iTmodMaxPos;
+	"DashBoard".BB1BR3.iTcellMin    := "BMS1".BR03.iTcellMinMeas;
+	"DashBoard".BB1BR3.iTmodMinPos := "BMS1".BR03.iTmodMinPos;
+	"DashBoard".BB1BR3.iTempSet     := "BMS1".TMS03.iTempSet;
+	"DashBoard".BB1BR3.iTrackIn     := "BMS1".BR03.iTrackInMeas;
+	"DashBoard".BB1BR3.iTrackOut    := "BMS1".BR03.iTrackOutMeas;
+	"DashBoard".BB1BR3.iVmodMaxPos := "BMS1".BR03.iVmodMaxPos;
+	"DashBoard".BB1BR3.iVmodMinPos := "BMS1".BR03.iVmodMinPos;
+	"DashBoard".BB1BR3.rIdc         := "BMS1".BR03.rIdcMeas;
+	"DashBoard".BB1BR3.rSOC         := "BMS1".BR03.rSOCmeas;
+	"DashBoard".BB1BR3.rSOH         := "BMS1".BR03.rSOHmeas;
+	"DashBoard".BB1BR3.rVcellAvg    := "BMS1".BR03.rVcellAvgMeas;
+	"DashBoard".BB1BR3.rVcellMax    := "BMS1".BR03.rVcellMaxMeas;
+	"DashBoard".BB1BR3.rVcellMin    := "BMS1".BR03.rVcellMinMeas;
+	"DashBoard".BB1BR3.rVdc         := "BMS1".BR03.rVdcMeas;
+	
+	// Data BB1 Rack 4
+	
+	"DashBoard".BB1BR4.iTamb        := "BMS1".BR04.iTambMeas;
+	"DashBoard".BB1BR4.iTcellAvg    := "BMS1".BR04.iTcellAvgMeas;
+	"DashBoard".BB1BR4.iTcellMax    := "BMS1".BR04.iTcellMaxMeas;
+	"DashBoard".BB1BR4.iTmodMaxPos := "BMS1".BR04.iTmodMaxPos;
+	"DashBoard".BB1BR4.iTcellMin    := "BMS1".BR04.iTcellMinMeas;
+	"DashBoard".BB1BR4.iTmodMinPos := "BMS1".BR04.iTmodMinPos;
+	"DashBoard".BB1BR4.iTempSet     := "BMS1".TMS04.iTempSet;
+	"DashBoard".BB1BR4.iTrackIn     := "BMS1".BR04.iTrackInMeas;
+	"DashBoard".BB1BR4.iTrackOut    := "BMS1".BR04.iTrackOutMeas;
+	"DashBoard".BB1BR4.iVmodMaxPos := "BMS1".BR04.iVmodMaxPos;
+	"DashBoard".BB1BR4.iVmodMinPos := "BMS1".BR04.iVmodMinPos;
+	"DashBoard".BB1BR4.rIdc         := "BMS1".BR04.rIdcMeas;
+	"DashBoard".BB1BR4.rSOC         := "BMS1".BR04.rSOCmeas;
+	"DashBoard".BB1BR4.rSOH         := "BMS1".BR04.rSOHmeas;
+	"DashBoard".BB1BR4.rVcellAvg    := "BMS1".BR04.rVcellAvgMeas;
+	"DashBoard".BB1BR4.rVcellMax    := "BMS1".BR04.rVcellMaxMeas;
+	"DashBoard".BB1BR4.rVcellMin    := "BMS1".BR04.rVcellMinMeas;
+	"DashBoard".BB1BR4.rVdc         := "BMS1".BR04.rVdcMeas;
+	
+	// Data BB1 Rack 5
+	
+	"DashBoard".BB1BR5.iTamb        := "BMS1".BR05.iTambMeas;
+	"DashBoard".BB1BR5.iTcellAvg    := "BMS1".BR05.iTcellAvgMeas;
+	"DashBoard".BB1BR5.iTcellMax    := "BMS1".BR05.iTcellMaxMeas;
+	"DashBoard".BB1BR5.iTmodMaxPos := "BMS1".BR05.iTmodMaxPos;
+	"DashBoard".BB1BR5.iTcellMin    := "BMS1".BR05.iTcellMinMeas;
+	"DashBoard".BB1BR5.iTmodMinPos := "BMS1".BR05.iTmodMinPos;
+	"DashBoard".BB1BR5.iTempSet     := "BMS1".TMS05.iTempSet;
+	"DashBoard".BB1BR5.iTrackIn     := "BMS1".BR05.iTrackInMeas;
+	"DashBoard".BB1BR5.iTrackOut    := "BMS1".BR05.iTrackOutMeas;
+	"DashBoard".BB1BR5.iVmodMaxPos := "BMS1".BR05.iVmodMaxPos;
+	"DashBoard".BB1BR5.iVmodMinPos := "BMS1".BR05.iVmodMinPos;
+	"DashBoard".BB1BR5.rIdc         := "BMS1".BR05.rIdcMeas;
+	"DashBoard".BB1BR5.rSOC         := "BMS1".BR05.rSOCmeas;
+	"DashBoard".BB1BR5.rSOH         := "BMS1".BR05.rSOHmeas;
+	"DashBoard".BB1BR5.rVcellAvg    := "BMS1".BR05.rVcellAvgMeas;
+	"DashBoard".BB1BR5.rVcellMax    := "BMS1".BR05.rVcellMaxMeas;
+	"DashBoard".BB1BR5.rVcellMin    := "BMS1".BR05.rVcellMinMeas;
+	"DashBoard".BB1BR5.rVdc         := "BMS1".BR05.rVdcMeas;
+	
+	// Data BB1 Rack 6
+	
+	"DashBoard".BB1BR6.iTamb        := "BMS1".BR06.iTambMeas;
+	"DashBoard".BB1BR6.iTcellAvg    := "BMS1".BR06.iTcellAvgMeas;
+	"DashBoard".BB1BR6.iTcellMax    := "BMS1".BR06.iTcellMaxMeas;
+	"DashBoard".BB1BR6.iTmodMaxPos := "BMS1".BR06.iTmodMaxPos;
+	"DashBoard".BB1BR6.iTcellMin    := "BMS1".BR06.iTcellMinMeas;
+	"DashBoard".BB1BR6.iTmodMinPos := "BMS1".BR06.iTmodMinPos;
+	"DashBoard".BB1BR6.iTempSet     := "BMS1".TMS06.iTempSet;
+	"DashBoard".BB1BR6.iTrackIn     := "BMS1".BR06.iTrackInMeas;
+	"DashBoard".BB1BR6.iTrackOut    := "BMS1".BR06.iTrackOutMeas;
+	"DashBoard".BB1BR6.iVmodMaxPos := "BMS1".BR06.iVmodMaxPos;
+	"DashBoard".BB1BR6.iVmodMinPos := "BMS1".BR06.iVmodMinPos;
+	"DashBoard".BB1BR6.rIdc         := "BMS1".BR06.rIdcMeas;
+	"DashBoard".BB1BR6.rSOC         := "BMS1".BR06.rSOCmeas;
+	"DashBoard".BB1BR6.rSOH         := "BMS1".BR06.rSOHmeas;
+	"DashBoard".BB1BR6.rVcellAvg    := "BMS1".BR06.rVcellAvgMeas;
+	"DashBoard".BB1BR6.rVcellMax    := "BMS1".BR06.rVcellMaxMeas;
+	"DashBoard".BB1BR6.rVcellMin    := "BMS1".BR06.rVcellMinMeas;
+	"DashBoard".BB1BR6.rVdc         := "BMS1".BR06.rVdcMeas;
+	
+	// Data BB1 Rack 7
+	
+	"DashBoard".BB1BR7.iTamb        := "BMS1".BR07.iTambMeas;
+	"DashBoard".BB1BR7.iTcellAvg    := "BMS1".BR07.iTcellAvgMeas;
+	"DashBoard".BB1BR7.iTcellMax    := "BMS1".BR07.iTcellMaxMeas;
+	"DashBoard".BB1BR7.iTmodMaxPos := "BMS1".BR07.iTmodMaxPos;
+	"DashBoard".BB1BR7.iTcellMin    := "BMS1".BR07.iTcellMinMeas;
+	"DashBoard".BB1BR7.iTmodMinPos := "BMS1".BR07.iTmodMinPos;
+	"DashBoard".BB1BR7.iTempSet     := "BMS1".TMS07.iTempSet;
+	"DashBoard".BB1BR7.iTrackIn     := "BMS1".BR07.iTrackInMeas;
+	"DashBoard".BB1BR7.iTrackOut    := "BMS1".BR07.iTrackOutMeas;
+	"DashBoard".BB1BR7.iVmodMaxPos := "BMS1".BR07.iVmodMaxPos;
+	"DashBoard".BB1BR7.iVmodMinPos := "BMS1".BR07.iVmodMinPos;
+	"DashBoard".BB1BR7.rIdc         := "BMS1".BR07.rIdcMeas;
+	"DashBoard".BB1BR7.rSOC         := "BMS1".BR07.rSOCmeas;
+	"DashBoard".BB1BR7.rSOH         := "BMS1".BR07.rSOHmeas;
+	"DashBoard".BB1BR7.rVcellAvg    := "BMS1".BR07.rVcellAvgMeas;
+	"DashBoard".BB1BR7.rVcellMax    := "BMS1".BR07.rVcellMaxMeas;
+	"DashBoard".BB1BR7.rVcellMin    := "BMS1".BR07.rVcellMinMeas;
+	"DashBoard".BB1BR7.rVdc         := "BMS1".BR07.rVdcMeas;
+	
+	// Data BB1 Rack 8
+	
+	"DashBoard".BB1BR8.iTamb        := "BMS1".BR08.iTambMeas;
+	"DashBoard".BB1BR8.iTcellAvg    := "BMS1".BR08.iTcellAvgMeas;
+	"DashBoard".BB1BR8.iTcellMax    := "BMS1".BR08.iTcellMaxMeas;
+	"DashBoard".BB1BR8.iTmodMaxPos := "BMS1".BR08.iTmodMaxPos;
+	"DashBoard".BB1BR8.iTcellMin    := "BMS1".BR08.iTcellMinMeas;
+	"DashBoard".BB1BR8.iTmodMinPos := "BMS1".BR08.iTmodMinPos;
+	"DashBoard".BB1BR8.iTempSet     := "BMS1".TMS08.iTempSet;
+	"DashBoard".BB1BR8.iTrackIn     := "BMS1".BR08.iTrackInMeas;
+	"DashBoard".BB1BR8.iTrackOut    := "BMS1".BR08.iTrackOutMeas;
+	"DashBoard".BB1BR8.iVmodMaxPos := "BMS1".BR08.iVmodMaxPos;
+	"DashBoard".BB1BR8.iVmodMinPos := "BMS1".BR08.iVmodMinPos;
+	"DashBoard".BB1BR8.rIdc         := "BMS1".BR08.rIdcMeas;
+	"DashBoard".BB1BR8.rSOC         := "BMS1".BR08.rSOCmeas;
+	"DashBoard".BB1BR8.rSOH         := "BMS1".BR08.rSOHmeas;
+	"DashBoard".BB1BR8.rVcellAvg    := "BMS1".BR08.rVcellAvgMeas;
+	"DashBoard".BB1BR8.rVcellMax    := "BMS1".BR08.rVcellMaxMeas;
+	"DashBoard".BB1BR8.rVcellMin    := "BMS1".BR08.rVcellMinMeas;
+	"DashBoard".BB1BR8.rVdc         := "BMS1".BR08.rVdcMeas;
+	
+	// Data BB1 Rack 9
+	
+	"DashBoard".BB1BR9.iTamb        := "BMS1".BR09.iTambMeas;
+	"DashBoard".BB1BR9.iTcellAvg    := "BMS1".BR09.iTcellAvgMeas;
+	"DashBoard".BB1BR9.iTcellMax    := "BMS1".BR09.iTcellMaxMeas;
+	"DashBoard".BB1BR9.iTmodMaxPos := "BMS1".BR09.iTmodMaxPos;
+	"DashBoard".BB1BR9.iTcellMin    := "BMS1".BR09.iTcellMinMeas;
+	"DashBoard".BB1BR9.iTmodMinPos := "BMS1".BR09.iTmodMinPos;
+	"DashBoard".BB1BR9.iTempSet     := "BMS1".TMS09.iTempSet;
+	"DashBoard".BB1BR9.iTrackIn     := "BMS1".BR09.iTrackInMeas;
+	"DashBoard".BB1BR9.iTrackOut    := "BMS1".BR09.iTrackOutMeas;
+	"DashBoard".BB1BR9.iVmodMaxPos := "BMS1".BR09.iVmodMaxPos;
+	"DashBoard".BB1BR9.iVmodMinPos := "BMS1".BR09.iVmodMinPos;
+	"DashBoard".BB1BR9.rIdc         := "BMS1".BR09.rIdcMeas;
+	"DashBoard".BB1BR9.rSOC         := "BMS1".BR09.rSOCmeas;
+	"DashBoard".BB1BR9.rSOH         := "BMS1".BR09.rSOHmeas;
+	"DashBoard".BB1BR9.rVcellAvg    := "BMS1".BR09.rVcellAvgMeas;
+	"DashBoard".BB1BR9.rVcellMax    := "BMS1".BR09.rVcellMaxMeas;
+	"DashBoard".BB1BR9.rVcellMin    := "BMS1".BR09.rVcellMinMeas;
+	"DashBoard".BB1BR9.rVdc         := "BMS1".BR09.rVdcMeas;
+	
+	// Data BB1 Rack 10
+	
+	"DashBoard".BB1BR10.iTamb           := "BMS1".BR10.iTambMeas;
+	"DashBoard".BB1BR10.iTcellAvg       := "BMS1".BR10.iTcellAvgMeas;
+	"DashBoard".BB1BR10.iTcellMax       := "BMS1".BR10.iTcellMaxMeas;
+	"DashBoard".BB1BR10.iTmodMaxPos    := "BMS1".BR10.iTmodMaxPos;
+	"DashBoard".BB1BR10.iTcellMin       := "BMS1".BR10.iTcellMinMeas;
+	"DashBoard".BB1BR10.iTmodMinPos    := "BMS1".BR10.iTmodMinPos;
+	"DashBoard".BB1BR10.iTempSet        := "BMS1".TMS10.iTempSet;
+	"DashBoard".BB1BR10.iTrackIn        := "BMS1".BR10.iTrackInMeas;
+	"DashBoard".BB1BR10.iTrackOut       := "BMS1".BR10.iTrackOutMeas;
+	"DashBoard".BB1BR10.iVmodMaxPos    := "BMS1".BR10.iVmodMaxPos;
+	"DashBoard".BB1BR10.iVmodMinPos    := "BMS1".BR10.iVmodMinPos;
+	"DashBoard".BB1BR10.rIdc            := "BMS1".BR10.rIdcMeas;
+	"DashBoard".BB1BR10.rSOC            := "BMS1".BR10.rSOCmeas;
+	"DashBoard".BB1BR10.rSOH            := "BMS1".BR10.rSOHmeas;
+	"DashBoard".BB1BR10.rVcellAvg       := "BMS1".BR10.rVcellAvgMeas;
+	"DashBoard".BB1BR10.rVcellMax       := "BMS1".BR10.rVcellMaxMeas;
+	"DashBoard".BB1BR10.rVcellMin       := "BMS1".BR10.rVcellMinMeas;
+	"DashBoard".BB1BR10.rVdc            := "BMS1".BR10.rVdcMeas;
+	
+	// Data BB1 Rack 11
+	
+	"DashBoard".BB1BR11.iTamb := "BMS1".BR11.iTambMeas;
+	"DashBoard".BB1BR11.iTcellAvg := "BMS1".BR11.iTcellAvgMeas;
+	"DashBoard".BB1BR11.iTcellMax := "BMS1".BR11.iTcellMaxMeas;
+	"DashBoard".BB1BR11.iTmodMaxPos := "BMS1".BR11.iTmodMaxPos;
+	"DashBoard".BB1BR11.iTcellMin := "BMS1".BR11.iTcellMinMeas;
+	"DashBoard".BB1BR11.iTmodMinPos := "BMS1".BR11.iTmodMinPos;
+	"DashBoard".BB1BR11.iTempSet := "BMS1".TMS10.iTempSet;
+	"DashBoard".BB1BR11.iTrackIn := "BMS1".BR11.iTrackInMeas;
+	"DashBoard".BB1BR11.iTrackOut := "BMS1".BR11.iTrackOutMeas;
+	"DashBoard".BB1BR11.iVmodMaxPos := "BMS1".BR11.iVmodMaxPos;
+	"DashBoard".BB1BR11.iVmodMinPos := "BMS1".BR11.iVmodMinPos;
+	"DashBoard".BB1BR11.rIdc := "BMS1".BR11.rIdcMeas;
+	"DashBoard".BB1BR11.rSOC := "BMS1".BR11.rSOCmeas;
+	"DashBoard".BB1BR11.rSOH := "BMS1".BR11.rSOHmeas;
+	"DashBoard".BB1BR11.rVcellAvg := "BMS1".BR11.rVcellAvgMeas;
+	"DashBoard".BB1BR11.rVcellMax := "BMS1".BR11.rVcellMaxMeas;
+	"DashBoard".BB1BR11.rVcellMin := "BMS1".BR11.rVcellMinMeas;
+	"DashBoard".BB1BR11.rVdc := "BMS1".BR11.rVdcMeas;
+	
+	// Data BB1 Rack 12
+	
+	"DashBoard".BB1BR12.iTamb := "BMS1".BR12.iTambMeas;
+	"DashBoard".BB1BR12.iTcellAvg := "BMS1".BR12.iTcellAvgMeas;
+	"DashBoard".BB1BR12.iTcellMax := "BMS1".BR12.iTcellMaxMeas;
+	"DashBoard".BB1BR12.iTmodMaxPos := "BMS1".BR12.iTmodMaxPos;
+	"DashBoard".BB1BR12.iTcellMin := "BMS1".BR12.iTcellMinMeas;
+	"DashBoard".BB1BR12.iTmodMinPos := "BMS1".BR12.iTmodMinPos;
+	"DashBoard".BB1BR12.iTempSet := "BMS1".TMS10.iTempSet;
+	"DashBoard".BB1BR12.iTrackIn := "BMS1".BR12.iTrackInMeas;
+	"DashBoard".BB1BR12.iTrackOut := "BMS1".BR12.iTrackOutMeas;
+	"DashBoard".BB1BR12.iVmodMaxPos := "BMS1".BR12.iVmodMaxPos;
+	"DashBoard".BB1BR12.iVmodMinPos := "BMS1".BR12.iVmodMinPos;
+	"DashBoard".BB1BR12.rIdc := "BMS1".BR12.rIdcMeas;
+	"DashBoard".BB1BR12.rSOC := "BMS1".BR12.rSOCmeas;
+	"DashBoard".BB1BR12.rSOH := "BMS1".BR12.rSOHmeas;
+	"DashBoard".BB1BR12.rVcellAvg := "BMS1".BR12.rVcellAvgMeas;
+	"DashBoard".BB1BR12.rVcellMax := "BMS1".BR12.rVcellMaxMeas;
+	"DashBoard".BB1BR12.rVcellMin := "BMS1".BR12.rVcellMinMeas;
+	"DashBoard".BB1BR12.rVdc := "BMS1".BR12.rVdcMeas;
+	
+	// Data Battery Bank 2
+	
+	"DashBoard".BB2.iNBRConn    := "BMS2".BB.iNBRconnectCount;
+	"DashBoard".BB2.iTcellAvg   := "BMS2".BB.iTcellAvgMeas;
+	"DashBoard".BB2.iTcellMax   := "BMS2".BB.iTcellMaxMeas;
+	"DashBoard".BB2.iTcellMin   := "BMS2".BB.iTcellMinMeas;
+	"DashBoard".BB2.rIdc        := "BMS2".BB.rIdcMeas;
+	"DashBoard".BB2.rPdc        := ("BMS2".BB.rVdcMeas * "BMS2".BB.rIdcMeas);
+	"DashBoard".BB2.rSOC        := "BMS2".BB.rSOCmeas;
+	"DashBoard".BB2.rSOH        := "BMS2".BB.rSOHmeas;
+	"DashBoard".BB2.rVcellAvg   := "BMS2".BB.rVcellAvgMeas;
+	"DashBoard".BB2.rVcellMax   := "BMS2".BB.rVcellMaxMeas;
+	"DashBoard".BB2.rVcellMin   := "BMS2".BB.rVcellMinMeas;
+	"DashBoard".BB2.rVdc        := "BMS2".BB.rVdcMeas;
+	
+	// Data BB2 Rack 1
+	
+	"DashBoard".BB2BR1.iTamb        := "BMS2".BR01.iTambMeas;
+	"DashBoard".BB2BR1.iTcellAvg    := "BMS2".BR01.iTcellAvgMeas;
+	"DashBoard".BB2BR1.iTcellMax    := "BMS2".BR01.iTcellMaxMeas;
+	"DashBoard".BB2BR1.iTmodMaxPos := "BMS2".BR01.iTmodMaxPos;
+	"DashBoard".BB2BR1.iTcellMin    := "BMS2".BR01.iTcellMinMeas;
+	"DashBoard".BB2BR1.iTmodMinPos := "BMS2".BR01.iTmodMinPos;
+	"DashBoard".BB2BR1.iTempSet     := "BMS2".TMS01.iTempSet;
+	"DashBoard".BB2BR1.iTrackIn     := "BMS2".BR01.iTrackInMeas;
+	"DashBoard".BB2BR1.iTrackOut    := "BMS2".BR01.iTrackOutMeas;
+	"DashBoard".BB2BR1.iVmodMaxPos := "BMS2".BR01.iVmodMaxPos;
+	"DashBoard".BB2BR1.iVmodMinPos := "BMS2".BR01.iVmodMinPos;
+	"DashBoard".BB2BR1.rIdc         := "BMS2".BR01.rIdcMeas;
+	"DashBoard".BB2BR1.rSOC         := "BMS2".BR01.rSOCmeas;
+	"DashBoard".BB2BR1.rSOH         := "BMS2".BR01.rSOHmeas;
+	"DashBoard".BB2BR1.rVcellAvg    := "BMS2".BR01.rVcellAvgMeas;
+	"DashBoard".BB2BR1.rVcellMax    := "BMS2".BR01.rVcellMaxMeas;
+	"DashBoard".BB2BR1.rVcellMin    := "BMS2".BR01.rVcellMinMeas;
+	"DashBoard".BB2BR1.rVdc         := "BMS2".BR01.rVdcMeas;
+	
+	// Data BB2 Rack 2
+	
+	"DashBoard".BB2BR2.iTamb        := "BMS2".BR02.iTambMeas;
+	"DashBoard".BB2BR2.iTcellAvg    := "BMS2".BR02.iTcellAvgMeas;
+	"DashBoard".BB2BR2.iTcellMax    := "BMS2".BR02.iTcellMaxMeas;
+	"DashBoard".BB2BR2.iTmodMaxPos := "BMS2".BR02.iTmodMaxPos;
+	"DashBoard".BB2BR2.iTcellMin    := "BMS2".BR02.iTcellMinMeas;
+	"DashBoard".BB2BR2.iTmodMinPos := "BMS2".BR02.iTmodMinPos;
+	"DashBoard".BB2BR2.iTempSet     := "BMS2".TMS02.iTempSet;
+	"DashBoard".BB2BR2.iTrackIn     := "BMS2".BR02.iTrackInMeas;
+	"DashBoard".BB2BR2.iTrackOut    := "BMS2".BR02.iTrackOutMeas;
+	"DashBoard".BB2BR2.iVmodMaxPos := "BMS2".BR02.iVmodMaxPos;
+	"DashBoard".BB2BR2.iVmodMinPos := "BMS2".BR02.iVmodMinPos;
+	"DashBoard".BB2BR2.rIdc         := "BMS2".BR02.rIdcMeas;
+	"DashBoard".BB2BR2.rSOC         := "BMS2".BR02.rSOCmeas;
+	"DashBoard".BB2BR2.rSOH         := "BMS2".BR02.rSOHmeas;
+	"DashBoard".BB2BR2.rVcellAvg    := "BMS2".BR02.rVcellAvgMeas;
+	"DashBoard".BB2BR2.rVcellMax    := "BMS2".BR02.rVcellMaxMeas;
+	"DashBoard".BB2BR2.rVcellMin    := "BMS2".BR02.rVcellMinMeas;
+	"DashBoard".BB2BR2.rVdc         := "BMS2".BR02.rVdcMeas;
+	
+	// Data BB2 Rack 3
+	
+	"DashBoard".BB2BR3.iTamb        := "BMS2".BR03.iTambMeas;
+	"DashBoard".BB2BR3.iTcellAvg    := "BMS2".BR03.iTcellAvgMeas;
+	"DashBoard".BB2BR3.iTcellMax    := "BMS2".BR03.iTcellMaxMeas;
+	"DashBoard".BB2BR3.iTmodMaxPos := "BMS2".BR03.iTmodMaxPos;
+	"DashBoard".BB2BR3.iTcellMin    := "BMS2".BR03.iTcellMinMeas;
+	"DashBoard".BB2BR3.iTmodMinPos := "BMS2".BR03.iTmodMinPos;
+	"DashBoard".BB2BR3.iTempSet     := "BMS2".TMS03.iTempSet;
+	"DashBoard".BB2BR3.iTrackIn     := "BMS2".BR03.iTrackInMeas;
+	"DashBoard".BB2BR3.iTrackOut    := "BMS2".BR03.iTrackOutMeas;
+	"DashBoard".BB2BR3.iVmodMaxPos := "BMS2".BR03.iVmodMaxPos;
+	"DashBoard".BB2BR3.iVmodMinPos := "BMS2".BR03.iVmodMinPos;
+	"DashBoard".BB2BR3.rIdc         := "BMS2".BR03.rIdcMeas;
+	"DashBoard".BB2BR3.rSOC         := "BMS2".BR03.rSOCmeas;
+	"DashBoard".BB2BR3.rSOH         := "BMS2".BR03.rSOHmeas;
+	"DashBoard".BB2BR3.rVcellAvg    := "BMS2".BR03.rVcellAvgMeas;
+	"DashBoard".BB2BR3.rVcellMax    := "BMS2".BR03.rVcellMaxMeas;
+	"DashBoard".BB2BR3.rVcellMin    := "BMS2".BR03.rVcellMinMeas;
+	"DashBoard".BB2BR3.rVdc         := "BMS2".BR03.rVdcMeas;
+	
+	// Data BB2 Rack 4
+	
+	"DashBoard".BB2BR4.iTamb        := "BMS2".BR04.iTambMeas;
+	"DashBoard".BB2BR4.iTcellAvg    := "BMS2".BR04.iTcellAvgMeas;
+	"DashBoard".BB2BR4.iTcellMax    := "BMS2".BR04.iTcellMaxMeas;
+	"DashBoard".BB2BR4.iTmodMaxPos := "BMS2".BR04.iTmodMaxPos;
+	"DashBoard".BB2BR4.iTcellMin    := "BMS2".BR04.iTcellMinMeas;
+	"DashBoard".BB2BR4.iTmodMinPos := "BMS2".BR04.iTmodMinPos;
+	"DashBoard".BB2BR4.iTempSet     := "BMS2".TMS04.iTempSet;
+	"DashBoard".BB2BR4.iTrackIn     := "BMS2".BR04.iTrackInMeas;
+	"DashBoard".BB2BR4.iTrackOut    := "BMS2".BR04.iTrackOutMeas;
+	"DashBoard".BB2BR4.iVmodMaxPos := "BMS2".BR04.iVmodMaxPos;
+	"DashBoard".BB2BR4.iVmodMinPos := "BMS2".BR04.iVmodMinPos;
+	"DashBoard".BB2BR4.rIdc         := "BMS2".BR04.rIdcMeas;
+	"DashBoard".BB2BR4.rSOC         := "BMS2".BR04.rSOCmeas;
+	"DashBoard".BB2BR4.rSOH         := "BMS2".BR04.rSOHmeas;
+	"DashBoard".BB2BR4.rVcellAvg    := "BMS2".BR04.rVcellAvgMeas;
+	"DashBoard".BB2BR4.rVcellMax    := "BMS2".BR04.rVcellMaxMeas;
+	"DashBoard".BB2BR4.rVcellMin    := "BMS2".BR04.rVcellMinMeas;
+	"DashBoard".BB2BR4.rVdc         := "BMS2".BR04.rVdcMeas;
+	
+	// Data BB2 Rack 5
+	
+	"DashBoard".BB2BR5.iTamb        := "BMS2".BR05.iTambMeas;
+	"DashBoard".BB2BR5.iTcellAvg    := "BMS2".BR05.iTcellAvgMeas;
+	"DashBoard".BB2BR5.iTcellMax    := "BMS2".BR05.iTcellMaxMeas;
+	"DashBoard".BB2BR5.iTmodMaxPos := "BMS2".BR05.iTmodMaxPos;
+	"DashBoard".BB2BR5.iTcellMin    := "BMS2".BR05.iTcellMinMeas;
+	"DashBoard".BB2BR5.iTmodMinPos := "BMS2".BR05.iTmodMinPos;
+	"DashBoard".BB2BR5.iTempSet     := "BMS2".TMS05.iTempSet;
+	"DashBoard".BB2BR5.iTrackIn     := "BMS2".BR05.iTrackInMeas;
+	"DashBoard".BB2BR5.iTrackOut    := "BMS2".BR05.iTrackOutMeas;
+	"DashBoard".BB2BR5.iVmodMaxPos := "BMS2".BR05.iVmodMaxPos;
+	"DashBoard".BB2BR5.iVmodMinPos := "BMS2".BR05.iVmodMinPos;
+	"DashBoard".BB2BR5.rIdc         := "BMS2".BR05.rIdcMeas;
+	"DashBoard".BB2BR5.rSOC         := "BMS2".BR05.rSOCmeas;
+	"DashBoard".BB2BR5.rSOH         := "BMS2".BR05.rSOHmeas;
+	"DashBoard".BB2BR5.rVcellAvg    := "BMS2".BR05.rVcellAvgMeas;
+	"DashBoard".BB2BR5.rVcellMax    := "BMS2".BR05.rVcellMaxMeas;
+	"DashBoard".BB2BR5.rVcellMin    := "BMS2".BR05.rVcellMinMeas;
+	"DashBoard".BB2BR5.rVdc         := "BMS2".BR05.rVdcMeas;
+	
+	// Data BB2 Rack 6
+	
+	"DashBoard".BB2BR6.iTamb        := "BMS2".BR06.iTambMeas;
+	"DashBoard".BB2BR6.iTcellAvg    := "BMS2".BR06.iTcellAvgMeas;
+	"DashBoard".BB2BR6.iTcellMax    := "BMS2".BR06.iTcellMaxMeas;
+	"DashBoard".BB2BR6.iTmodMaxPos := "BMS2".BR06.iTmodMaxPos;
+	"DashBoard".BB2BR6.iTcellMin    := "BMS2".BR06.iTcellMinMeas;
+	"DashBoard".BB2BR6.iTmodMinPos := "BMS2".BR06.iTmodMinPos;
+	"DashBoard".BB2BR6.iTempSet     := "BMS2".TMS06.iTempSet;
+	"DashBoard".BB2BR6.iTrackIn     := "BMS2".BR06.iTrackInMeas;
+	"DashBoard".BB2BR6.iTrackOut    := "BMS2".BR06.iTrackOutMeas;
+	"DashBoard".BB2BR6.iVmodMaxPos := "BMS2".BR06.iVmodMaxPos;
+	"DashBoard".BB2BR6.iVmodMinPos := "BMS2".BR06.iVmodMinPos;
+	"DashBoard".BB2BR6.rIdc         := "BMS2".BR06.rIdcMeas;
+	"DashBoard".BB2BR6.rSOC         := "BMS2".BR06.rSOCmeas;
+	"DashBoard".BB2BR6.rSOH         := "BMS2".BR06.rSOHmeas;
+	"DashBoard".BB2BR6.rVcellAvg    := "BMS2".BR06.rVcellAvgMeas;
+	"DashBoard".BB2BR6.rVcellMax    := "BMS2".BR06.rVcellMaxMeas;
+	"DashBoard".BB2BR6.rVcellMin    := "BMS2".BR06.rVcellMinMeas;
+	"DashBoard".BB2BR6.rVdc         := "BMS2".BR06.rVdcMeas;
+	
+	// Data BB2 Rack 7
+	
+	"DashBoard".BB2BR7.iTamb        := "BMS2".BR07.iTambMeas;
+	"DashBoard".BB2BR7.iTcellAvg    := "BMS2".BR07.iTcellAvgMeas;
+	"DashBoard".BB2BR7.iTcellMax    := "BMS2".BR07.iTcellMaxMeas;
+	"DashBoard".BB2BR7.iTmodMaxPos := "BMS2".BR07.iTmodMaxPos;
+	"DashBoard".BB2BR7.iTcellMin    := "BMS2".BR07.iTcellMinMeas;
+	"DashBoard".BB2BR7.iTmodMinPos := "BMS2".BR07.iTmodMinPos;
+	"DashBoard".BB2BR7.iTempSet     := "BMS2".TMS07.iTempSet;
+	"DashBoard".BB2BR7.iTrackIn     := "BMS2".BR07.iTrackInMeas;
+	"DashBoard".BB2BR7.iTrackOut    := "BMS2".BR07.iTrackOutMeas;
+	"DashBoard".BB2BR7.iVmodMaxPos := "BMS2".BR07.iVmodMaxPos;
+	"DashBoard".BB2BR7.iVmodMinPos := "BMS2".BR07.iVmodMinPos;
+	"DashBoard".BB2BR7.rIdc         := "BMS2".BR07.rIdcMeas;
+	"DashBoard".BB2BR7.rSOC         := "BMS2".BR07.rSOCmeas;
+	"DashBoard".BB2BR7.rSOH         := "BMS2".BR07.rSOHmeas;
+	"DashBoard".BB2BR7.rVcellAvg    := "BMS2".BR07.rVcellAvgMeas;
+	"DashBoard".BB2BR7.rVcellMax    := "BMS2".BR07.rVcellMaxMeas;
+	"DashBoard".BB2BR7.rVcellMin    := "BMS2".BR07.rVcellMinMeas;
+	"DashBoard".BB2BR7.rVdc         := "BMS2".BR07.rVdcMeas;
+	
+	// Data BB2 Rack 8
+	
+	"DashBoard".BB2BR8.iTamb        := "BMS2".BR08.iTambMeas;
+	"DashBoard".BB2BR8.iTcellAvg    := "BMS2".BR08.iTcellAvgMeas;
+	"DashBoard".BB2BR8.iTcellMax    := "BMS2".BR08.iTcellMaxMeas;
+	"DashBoard".BB2BR8.iTmodMaxPos := "BMS2".BR08.iTmodMaxPos;
+	"DashBoard".BB2BR8.iTcellMin    := "BMS2".BR08.iTcellMinMeas;
+	"DashBoard".BB2BR8.iTmodMinPos := "BMS2".BR08.iTmodMinPos;
+	"DashBoard".BB2BR8.iTempSet     := "BMS2".TMS08.iTempSet;
+	"DashBoard".BB2BR8.iTrackIn     := "BMS2".BR08.iTrackInMeas;
+	"DashBoard".BB2BR8.iTrackOut    := "BMS2".BR08.iTrackOutMeas;
+	"DashBoard".BB2BR8.iVmodMaxPos := "BMS2".BR08.iVmodMaxPos;
+	"DashBoard".BB2BR8.iVmodMinPos := "BMS2".BR08.iVmodMinPos;
+	"DashBoard".BB2BR8.rIdc         := "BMS2".BR08.rIdcMeas;
+	"DashBoard".BB2BR8.rSOC         := "BMS2".BR08.rSOCmeas;
+	"DashBoard".BB2BR8.rSOH         := "BMS2".BR08.rSOHmeas;
+	"DashBoard".BB2BR8.rVcellAvg    := "BMS2".BR08.rVcellAvgMeas;
+	"DashBoard".BB2BR8.rVcellMax    := "BMS2".BR08.rVcellMaxMeas;
+	"DashBoard".BB2BR8.rVcellMin    := "BMS2".BR08.rVcellMinMeas;
+	"DashBoard".BB2BR8.rVdc         := "BMS2".BR08.rVdcMeas;
+	
+	// Data BB2 Rack 9
+	
+	"DashBoard".BB2BR9.iTamb        := "BMS2".BR09.iTambMeas;
+	"DashBoard".BB2BR9.iTcellAvg    := "BMS2".BR09.iTcellAvgMeas;
+	"DashBoard".BB2BR9.iTcellMax    := "BMS2".BR09.iTcellMaxMeas;
+	"DashBoard".BB2BR9.iTmodMaxPos := "BMS2".BR09.iTmodMaxPos;
+	"DashBoard".BB2BR9.iTcellMin    := "BMS2".BR09.iTcellMinMeas;
+	"DashBoard".BB2BR9.iTmodMinPos := "BMS2".BR09.iTmodMinPos;
+	"DashBoard".BB2BR9.iTempSet     := "BMS2".TMS09.iTempSet;
+	"DashBoard".BB2BR9.iTrackIn     := "BMS2".BR09.iTrackInMeas;
+	"DashBoard".BB2BR9.iTrackOut    := "BMS2".BR09.iTrackOutMeas;
+	"DashBoard".BB2BR9.iVmodMaxPos := "BMS2".BR09.iVmodMaxPos;
+	"DashBoard".BB2BR9.iVmodMinPos := "BMS2".BR09.iVmodMinPos;
+	"DashBoard".BB2BR9.rIdc         := "BMS2".BR09.rIdcMeas;
+	"DashBoard".BB2BR9.rSOC         := "BMS2".BR09.rSOCmeas;
+	"DashBoard".BB2BR9.rSOH         := "BMS2".BR09.rSOHmeas;
+	"DashBoard".BB2BR9.rVcellAvg    := "BMS2".BR09.rVcellAvgMeas;
+	"DashBoard".BB2BR9.rVcellMax    := "BMS2".BR09.rVcellMaxMeas;
+	"DashBoard".BB2BR9.rVcellMin    := "BMS2".BR09.rVcellMinMeas;
+	"DashBoard".BB2BR9.rVdc         := "BMS2".BR09.rVdcMeas;
+	
+	// Data BB2 Rack 10
+	
+	"DashBoard".BB2BR10.iTamb           := "BMS2".BR10.iTambMeas;
+	"DashBoard".BB2BR10.iTcellAvg       := "BMS2".BR10.iTcellAvgMeas;
+	"DashBoard".BB2BR10.iTcellMax       := "BMS2".BR10.iTcellMaxMeas;
+	"DashBoard".BB2BR10.iTmodMaxPos    := "BMS2".BR10.iTmodMaxPos;
+	"DashBoard".BB2BR10.iTcellMin       := "BMS2".BR10.iTcellMinMeas;
+	"DashBoard".BB2BR10.iTmodMinPos    := "BMS2".BR10.iTmodMinPos;
+	"DashBoard".BB2BR10.iTempSet        := "BMS2".TMS10.iTempSet;
+	"DashBoard".BB2BR10.iTrackIn        := "BMS2".BR10.iTrackInMeas;
+	"DashBoard".BB2BR10.iTrackOut       := "BMS2".BR10.iTrackOutMeas;
+	"DashBoard".BB2BR10.iVmodMaxPos    := "BMS2".BR10.iVmodMaxPos;
+	"DashBoard".BB2BR10.iVmodMinPos    := "BMS2".BR10.iVmodMinPos;
+	"DashBoard".BB2BR10.rIdc            := "BMS2".BR10.rIdcMeas;
+	"DashBoard".BB2BR10.rSOC            := "BMS2".BR10.rSOCmeas;
+	"DashBoard".BB2BR10.rSOH            := "BMS2".BR10.rSOHmeas;
+	"DashBoard".BB2BR10.rVcellAvg       := "BMS2".BR10.rVcellAvgMeas;
+	"DashBoard".BB2BR10.rVcellMax       := "BMS2".BR10.rVcellMaxMeas;
+	"DashBoard".BB2BR10.rVcellMin       := "BMS2".BR10.rVcellMinMeas;
+	"DashBoard".BB2BR10.rVdc            := "BMS2".BR10.rVdcMeas;
+	
+	// Data BB2 Rack 11
+	
+	"DashBoard".BB2BR11.iTamb := "BMS2".BR11.iTambMeas;
+	"DashBoard".BB2BR11.iTcellAvg := "BMS2".BR11.iTcellAvgMeas;
+	"DashBoard".BB2BR11.iTcellMax := "BMS2".BR11.iTcellMaxMeas;
+	"DashBoard".BB2BR11.iTmodMaxPos := "BMS2".BR11.iTmodMaxPos;
+	"DashBoard".BB2BR11.iTcellMin := "BMS2".BR11.iTcellMinMeas;
+	"DashBoard".BB2BR11.iTmodMinPos := "BMS2".BR11.iTmodMinPos;
+	"DashBoard".BB2BR11.iTempSet := "BMS2".TMS10.iTempSet;
+	"DashBoard".BB2BR11.iTrackIn := "BMS2".BR11.iTrackInMeas;
+	"DashBoard".BB2BR11.iTrackOut := "BMS2".BR11.iTrackOutMeas;
+	"DashBoard".BB2BR11.iVmodMaxPos := "BMS2".BR11.iVmodMaxPos;
+	"DashBoard".BB2BR11.iVmodMinPos := "BMS2".BR11.iVmodMinPos;
+	"DashBoard".BB2BR11.rIdc := "BMS2".BR11.rIdcMeas;
+	"DashBoard".BB2BR11.rSOC := "BMS2".BR11.rSOCmeas;
+	"DashBoard".BB2BR11.rSOH := "BMS2".BR11.rSOHmeas;
+	"DashBoard".BB2BR11.rVcellAvg := "BMS2".BR11.rVcellAvgMeas;
+	"DashBoard".BB2BR11.rVcellMax := "BMS2".BR11.rVcellMaxMeas;
+	"DashBoard".BB2BR11.rVcellMin := "BMS2".BR11.rVcellMinMeas;
+	"DashBoard".BB2BR11.rVdc := "BMS2".BR11.rVdcMeas;
+	
+	// Data BB2 Rack 12
+	
+	"DashBoard".BB2BR12.iTamb := "BMS2".BR12.iTambMeas;
+	"DashBoard".BB2BR12.iTcellAvg := "BMS2".BR12.iTcellAvgMeas;
+	"DashBoard".BB2BR12.iTcellMax := "BMS2".BR12.iTcellMaxMeas;
+	"DashBoard".BB2BR12.iTmodMaxPos := "BMS2".BR12.iTmodMaxPos;
+	"DashBoard".BB2BR12.iTcellMin := "BMS2".BR12.iTcellMinMeas;
+	"DashBoard".BB2BR12.iTmodMinPos := "BMS2".BR12.iTmodMinPos;
+	"DashBoard".BB2BR12.iTempSet := "BMS2".TMS10.iTempSet;
+	"DashBoard".BB2BR12.iTrackIn := "BMS2".BR12.iTrackInMeas;
+	"DashBoard".BB2BR12.iTrackOut := "BMS2".BR12.iTrackOutMeas;
+	"DashBoard".BB2BR12.iVmodMaxPos := "BMS2".BR12.iVmodMaxPos;
+	"DashBoard".BB2BR12.iVmodMinPos := "BMS2".BR12.iVmodMinPos;
+	"DashBoard".BB2BR12.rIdc := "BMS2".BR12.rIdcMeas;
+	"DashBoard".BB2BR12.rSOC := "BMS2".BR12.rSOCmeas;
+	"DashBoard".BB2BR12.rSOH := "BMS2".BR12.rSOHmeas;
+	"DashBoard".BB2BR12.rVcellAvg := "BMS2".BR12.rVcellAvgMeas;
+	"DashBoard".BB2BR12.rVcellMax := "BMS2".BR12.rVcellMaxMeas;
+	"DashBoard".BB2BR12.rVcellMin := "BMS2".BR12.rVcellMinMeas;
+	"DashBoard".BB2BR12.rVdc := "BMS2".BR12.rVdcMeas;
+	
+	// Data PCS
+	
+	"DashBoard".PCS.DriveSt     := 0;
+	"DashBoard".PCS.FreqRef     := 0.0;
+	"DashBoard".PCS.Mref        := 0.0;
+	"DashBoard".PCS.Nref        := 0.0;
+	"DashBoard".PCS.OperMode    := 0;
+	"DashBoard".PCS.Vref        := 0.0;
+	//"DashBoard".PCS.iCodeSt     := "PCS_1".R.iCodeSt;
+	//"DashBoard".PCS.rFreq       := "PCS_1".R.rFrMeas;
+	//"DashBoard".PCS.rIdcBus1    := "PCS_1".R.rIdcBus1Meas;
+	//"DashBoard".PCS.rIdcBus2    := "PCS1".R.rIdcBus2Meas;
+	//"DashBoard".PCS.rIr         := "PCS1".R.rIrMeas;
+	//"DashBoard".PCS.rIs         := "PCS1".R.rIsMeas;
+	//"DashBoard".PCS.rIt         := "PCS1".R.rItMeas;
+	//"DashBoard".PCS.rPac        := "PCS1".R.rPacMeas;
+	//"DashBoard".PCS.rPacBus1Ref := "PCS1".W.rPac1Ref;
+	//"DashBoard".PCS.rPacBus2Ref := "PCS1".W.rPac2Ref;
+	//"DashBoard".PCS.rPdcBus1    := ("PCS1".R.rIdcBus1Meas * "PCS1".R.rVdcBus1Meas);
+	//"DashBoard".PCS.rPdcBus2    := ("PCS1".R.rIdcBus2Meas * "PCS1".R.rVdcBus2Meas);
+	//"DashBoard".PCS.rQac        := "PCS1".R.rQacMeas;
+	//"DashBoard".PCS.rQacBus1Ref := "PCS1".W.rQac1Ref;
+	//"DashBoard".PCS.rQacBus2Ref := "PCS1".W.rQac2Ref;
+	//"DashBoard".PCS.rSac        := "PCS1".R.rSacMeas;
+	//"DashBoard".PCS.rVdcBus1    := "PCS1".R.rVdcBus1Meas;
+	//"DashBoard".PCS.rVdcBus2    := "PCS1".R.rVdcBus2Meas;
+	//"DashBoard".PCS.rVrs        := "PCS1".R.rVrsMeas;
+	//"DashBoard".PCS.rVst        := "PCS1".R.rVstMeas;
+	//"DashBoard".PCS.rVtr        := "PCS1".R.rVtrMeas;
+	
+	// Data MVSKID
+	
+	//"SwitchI"(rInput1:= 0,
+	//rInput2:= 1,
+	//xSwitch:= "MV SKID".R.xLine1DiscCloseSt,
+	//rOutput=> "DashBoard".MVSKID.iLine1DiscSt);
+	
+	//"SwitchI"(rInput1 := 0,
+	     //     rInput2 := 1,
+	     //     xSwitch := "MV SKID".R.xLine1GndCloseSt,
+	     //     rOutput => "DashBoard".MVSKID.iLine1GroundSt);
+	
+	//"SwitchI"(rInput1 := 0,
+	// rInput2 := 1,
+	//  xSwitch := "MV SKID".R.xLine2DiscCloseSt,
+	//   rOutput => "DashBoard".MVSKID.iLine2DiscSt);
+	
+	//"SwitchI"(rInput1 := 0,
+	//      rInput2 := 1,
+	//      xSwitch := "MV SKID".R.xLine2GndCloseSt,
+	//      rOutput => "DashBoard".MVSKID.iLine2GroundSt);
+	
+	//"SwitchI"(rInput1 := 0,
+	//   rInput2 := 1,
+	//     xSwitch := "MV SKID".R.xProt1DiscCloseSt,
+	//      rOutput => "DashBoard".MVSKID.iProt1DiscSt);
+	
+	//"SwitchI"(rInput1 := 0,
+	//        rInput2 := 1,
+	//        xSwitch := "MV SKID".R.xProt1GndCloseSt,
+	//        rOutput => "DashBoard".MVSKID.iProt1GroundSt);
+	
+	//"SwitchI"(rInput1 := 0,
+	//     rInput2 := 1,
+	//      xSwitch := "MV SKID".R.xProt1CircBrkCloseSt,
+	//      rOutput => "DashBoard".MVSKID.iProt1CircBrkSt);
+	
+	"DashBoard".MVSKID.rTempTrafo := 0.0;
+	
+	// Data State Machine
+	
+	"DashBoard".SM.iSS1 := "SM1".iCountSS;
+	"DashBoard".SM.iSS2 := "SM2".iCountSS;
+	
+END_FUNCTION
+

@@ -1,0 +1,67 @@
+﻿FUNCTION "PE_InvStatus" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      iInvStatus : Int;   // Signal coming from Modbus read
+   END_VAR
+
+   VAR_OUTPUT 
+      arrStatus_Output : Array[0..17] of Bool;
+   END_VAR
+
+   VAR_TEMP 
+      arrStatus : Array[0..17] of Bool;
+      i : Int;
+   END_VAR
+
+
+BEGIN
+	CASE #iInvStatus OF
+	    0:
+	        #arrStatus[0] := TRUE;
+	    1:
+	        #arrStatus[1] := TRUE;
+	    2:
+	        #arrStatus[2] := TRUE;
+	    3:
+	        #arrStatus[3] := TRUE;
+	    4:
+	        #arrStatus[4] := TRUE;
+	    5:
+	        #arrStatus[5] := TRUE;
+	    6:
+	        #arrStatus[6] := TRUE;
+	    7:
+	        #arrStatus[7] := TRUE;
+	    8:
+	        #arrStatus[8] := TRUE;
+	    9:
+	        #arrStatus[9] := TRUE;
+	    10:
+	        #arrStatus[10] := TRUE;
+	    11:
+	        #arrStatus[11] := TRUE;
+	    12:
+	        #arrStatus[12] := TRUE;
+	    13:
+	        #arrStatus[13] := TRUE;
+	    14:
+	        #arrStatus[14] := TRUE;
+	    15:
+	        #arrStatus[15] := TRUE;
+	    16:
+	        #arrStatus[16] := TRUE;
+	    17:
+	        #arrStatus[17] := TRUE;
+	    ELSE
+	        FOR #i := 0 TO 17 DO                //if number out of range full array to zero
+	            #arrStatus [#i]:= FALSE;
+	        END_FOR;
+	END_CASE;
+	
+	#arrStatus_Output := #arrStatus;    //copy of local array
+	
+	
+	
+END_FUNCTION
+

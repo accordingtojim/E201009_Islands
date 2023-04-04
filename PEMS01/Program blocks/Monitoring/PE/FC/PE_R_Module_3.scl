@@ -1,0 +1,39 @@
+﻿FUNCTION "PE_R_Module_3" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Input_Data : Array[1..125] of Word;
+   END_VAR
+
+   VAR_OUTPUT 
+      Output_Data : "R_PE";
+   END_VAR
+
+   VAR_TEMP 
+      "DWord" : DWord;
+   END_VAR
+
+
+BEGIN
+	
+	// 23/03/2023
+	REGION
+	    #Output_Data.Module_3.bModuleStatus := #Input_Data[1];
+	    #Output_Data.Module_3.rCurrent_R := INT_TO_REAL(WORD_TO_INT(#Input_Data[2]));
+	    #Output_Data.Module_3.rCurrent_S := INT_TO_REAL(WORD_TO_INT(#Input_Data[3]));
+	    #Output_Data.Module_3.rCurrent_T := INT_TO_REAL(WORD_TO_INT(#Input_Data[4]));
+	    #Output_Data.Module_3.rDC_current := INT_TO_REAL(WORD_TO_INT(#Input_Data[5]));
+	    #Output_Data.Module_3.iDC_voltage_P := WORD_TO_INT(#Input_Data[6]);
+	    #Output_Data.Module_3.iDC_voltage_N := WORD_TO_INT(#Input_Data[7]);
+	    #Output_Data.Module_3.iDC_voltage := WORD_TO_INT(#Input_Data[8]);
+	    #Output_Data.Module_3.rActivePower := INT_TO_REAL(WORD_TO_INT(#Input_Data[9]));
+	    #Output_Data.Module_3.rReactivePower := INT_TO_REAL(WORD_TO_INT(#Input_Data[10]));
+	    #Output_Data.Module_3.uiAC_voltage_R := WORD_TO_UINT(#Input_Data[11]);
+	    #Output_Data.Module_3.uiAC_voltage_S := WORD_TO_UINT(#Input_Data[12]);
+	    #Output_Data.Module_3.uiAC_voltage_T := WORD_TO_UINT(#Input_Data[13]);
+	    #Output_Data.Module_3.iAmbientTemperature := WORD_TO_INT(#Input_Data[14]);
+	    #Output_Data.Module_3.iMaxTemperature := WORD_TO_INT(#Input_Data[15]);
+	    #Output_Data.Module_3.usiHumidity := WORD_TO_USINT(#Input_Data[16]);
+	END_REGION
+END_FUNCTION
+

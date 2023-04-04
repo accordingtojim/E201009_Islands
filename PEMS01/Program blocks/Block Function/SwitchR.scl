@@ -1,0 +1,28 @@
+﻿FUNCTION "SwitchR" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      rInput1 : Real;
+      rInput2 : Real;
+      xSwitch : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      rOutput : Real;
+   END_VAR
+
+   VAR_TEMP 
+      rOutTemp : Real;
+   END_VAR
+
+
+BEGIN
+	IF #xSwitch THEN
+	    #rOutTemp := #rInput2;
+	ELSE
+	    #rOutTemp := #rInput1;
+	END_IF;
+	
+	#rOutput := #rOutTemp;
+END_FUNCTION
+

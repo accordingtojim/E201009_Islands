@@ -1,0 +1,82 @@
+﻿FUNCTION "SM1_S9_Fault" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	// **********************************************************
+	// *                   MANAGEMENT ACTION                    *
+	// **********************************************************
+	
+	REGION State Machine Status
+	    
+	    "SM1".xSsBootSt      := False;
+	    "SM1".xSsWarmUpSt    := False;
+	    "SM1".xSsReadySt     := False;
+	    "SM1".xSsStandBySt   := False;
+	    "SM1".xSsRunSt       := False;
+	    "SM1".xSsTestSt      := False;
+	    "SM1".xSsAutoMaintSt := False;
+	    "SM1".xSsStopSt      := False;
+	    "SM1".xSsFaultSt     := True;
+	    
+	    "SM1".iCountSS := 9;
+	    
+	END_REGION
+	
+	"SM1".xPCSrunCmd := False;      //In fault state send stop command to the PCS
+	
+	REGION PCS enable Off
+	    
+	    IF "SM1".xPCSreadySt        //When the PCS are in ready take out the enable command to the PCS
+	    THEN
+	        "SM1".xPCSenbCmd := False;
+	    END_IF;
+	END_REGION
+	
+	REGION Command Open RMU and Battery
+	    
+	    IF "SM1".xPCSstopSt AND NOT "SM1".xVacPCS       //When we go in fault state have a possibility who the medium voltage is off
+	    THEN
+	        "SM1".xMVbreakerOpenCmd := True;        //If the medium voltage is off we need to open a MV breaker because otherwise after giving the open command to the battery,
+	                                                //the PCS would switch off AND in this CASE you could NOT close the MV breaker anymore
+	        IF "SM1".xMVbreakerOpenSt       //When the MV breaker are opened semd a open command to the battery
+	        THEN
+	            "SM1".xBattCloseCmd := False;
+	        END_IF;
+	    END_IF;
+	    
+	END_REGION
+	
+	REGION Command Open Battery
+	    
+	    IF "SM1".xPCSstopSt AND "SM1".xVacPCS       //If the medium voltage is on and PCS stopped send a open command to the battery
+	    THEN
+	        "SM1".xBattCloseCmd := False;
+	    END_IF;
+	    
+	END_REGION
+	
+	
+	// **********************************************************
+	// *                 MANAGEMENT TRANSITION                  *
+	// **********************************************************
+	
+	// Transition from Alarm to WarmUp
+	
+	IF NOT "SM1".xFltSt AND "SM1".xBattOpenSt       //Without faults and battery open return in warmup state
+	THEN
+	    "SM1".xT91 := True;
+	    "SM1".xMVbreakerOpenCmd := False;
+	END_IF;
+	
+	// Reset Transition
+	
+	"SM1".xT22   := False;
+	"SM1".xT33   := False;
+	"SM1".xT44   := False;
+	"SM1".xT53   := False;
+	"SM1".xT62   := False;
+	"SM1".xT73   := False;
+	
+END_FUNCTION
+

@@ -1,0 +1,62 @@
+﻿FUNCTION "Init PE" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	        //PCS (PE) Modbus
+	        
+	        //Initialized for read a 120 register at 10 ms
+	        
+	        "PCS_1".TCONR_fast.InterfaceId := 64;
+	        "PCS_1".TCONR_fast.ID := 11;
+	        "PCS_1".TCONR_fast.RemoteAddress.ADDR[1] := 10;
+	        "PCS_1".TCONR_fast.RemoteAddress.ADDR[2] := 138;
+	        "PCS_1".TCONR_fast.RemoteAddress.ADDR[3] := 1;
+	        "PCS_1".TCONR_fast.RemoteAddress.ADDR[4] := 51;
+	        
+	        "PCS_1".TCONR_fast.ActiveEstablished := true;
+	        "PCS_1".TCONR_fast.ConnectionType := 11;
+	        "PCS_1".TCONR_fast.RemotePort := 502;
+	        
+	        //Initialized for read a writeble variables
+	        
+	        "PCS_1".TCONR_slow.InterfaceId := 64;
+	        "PCS_1".TCONR_slow.ID := 12;
+	        "PCS_1".TCONR_slow.RemoteAddress.ADDR[1] := 10;
+	        "PCS_1".TCONR_slow.RemoteAddress.ADDR[2] := 138;
+	        "PCS_1".TCONR_slow.RemoteAddress.ADDR[3] := 1;
+	        "PCS_1".TCONR_slow.RemoteAddress.ADDR[4] := 51;
+	        
+	        "PCS_1".TCONR_slow.ActiveEstablished := true;
+	        "PCS_1".TCONR_slow.ConnectionType := 11;
+	        "PCS_1".TCONR_slow.RemotePort := 502;
+	        
+	        //Initialized for write a command
+	        
+	        "PCS_1".TCONW_slow.InterfaceId := 64;
+	        "PCS_1".TCONW_slow.ID := 13;
+	        "PCS_1".TCONW_slow.RemoteAddress.ADDR[1] := 10;
+	        "PCS_1".TCONW_slow.RemoteAddress.ADDR[2] := 138;
+	        "PCS_1".TCONW_slow.RemoteAddress.ADDR[3] := 1;
+	        "PCS_1".TCONW_slow.RemoteAddress.ADDR[4] := 51;
+	        
+	        "PCS_1".TCONW_slow.ActiveEstablished := true;
+	        "PCS_1".TCONW_slow.ConnectionType := 11;
+	        "PCS_1".TCONW_slow.RemotePort := 502;
+	        
+	        
+	        //MV SKID (PE) Modbus
+	        
+	        "MvSkid_1".TCON.InterfaceId := 64;
+	        "MvSkid_1".TCON.ID := 14;
+	        "MvSkid_1".TCON.RemoteAddress.ADDR[1] := 10;
+	        "MvSkid_1".TCON.RemoteAddress.ADDR[2] := 138;
+	        "MvSkid_1".TCON.RemoteAddress.ADDR[3] := 1;
+	        "MvSkid_1".TCON.RemoteAddress.ADDR[4] := 53;
+	        
+	        "MvSkid_1".TCON.ActiveEstablished := true;
+	        "MvSkid_1".TCON.ConnectionType := 11;
+	        "MvSkid_1".TCON.RemotePort := 502;
+	        
+END_FUNCTION
+

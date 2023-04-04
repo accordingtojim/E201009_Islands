@@ -1,0 +1,158 @@
+﻿FUNCTION "PN Write Data" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	//******************************************************************//
+	//                                                                  //
+	//                      Write Data from PLC CORE                    //
+	//                                                                  //
+	//******************************************************************//
+	
+	//Boolean
+	
+	"PN".W."x1.1" := "SS".xFltSt;
+	"PN".W."x1.2" := "SS".xAlmSt;
+	"PN".W."x1.3" := "SS".XWarSt;
+	"PN".W."x1.4" := "MbMVSKID_1".Connected;
+	"PN".W."x1.5" := "MbMVSKID_2".Connected;
+	"PN".W."x1.6" := False;
+	"PN".W."x1.7" := False;
+	"PN".W."x1.8" := FALSE; ////to check prima c'era NAC system fire alert
+	
+	"PN".W."x2.1" := "BMS1".xBankAvl;
+	"PN".W."x2.2" := "BMS1".xEnbCha;
+	"PN".W."x2.3" := "BMS1".xEnbDsch;
+	"PN".W."x2.4" := "BMS1".BBxFltSt;
+	"PN".W."x2.5" := "BMS1".BBxAlmSt;
+	"PN".W."x2.6" := "BMS1".BBxWarnSt;
+	"PN".W."x2.7" := False;
+	"PN".W."x2.8" := False;
+	
+	"PN".W."x3.1" := "BMS2".xBankAvl;
+	"PN".W."x3.2" := "BMS2".xEnbCha;
+	"PN".W."x3.3" := "BMS2".xEnbDsch;
+	"PN".W."x3.4" := "BMS2".BBxFltSt;
+	"PN".W."x3.5" := "BMS2".BBxAlmSt;
+	"PN".W."x3.6" := "BMS2".BBxWarnSt;
+	"PN".W."x3.7" := False;
+	"PN".W."x3.8" := False;
+	
+	"PN".W."x4.1" := "PCS_1".xDCbusAvl;
+	"PN".W."x4.2" := FALSE;
+	"PN".W."x4.3" := "PCS_1".xLVRT;
+	"PN".W."x4.4" := "PCS_1".xOVRT;
+	"PN".W."x4.5" := "PCS_1".xFltSt;
+	"PN".W."x4.6" := "PCS_1".xWarnSt;
+	"PN".W."x4.7" := False;
+	"PN".W."x4.8" := False;
+	
+	"PN".W."x5.1" := "MvSkid_1".xFltSt;
+	"PN".W."x5.2" := "MvSkid_1".xAlmSt;
+	"PN".W."x5.3" := "MvSkid_1".xWarnSt;
+	"PN".W."x5.4" := False;
+	"PN".W."x5.5" := False;
+	"PN".W."x5.6" := False;
+	"PN".W."x5.7" := False;
+	"PN".W."x5.8" := False;
+	
+	//Integer
+	
+	"PN".W.i1 := "PN".R.i1;
+	"PN".W.i2 := 0;
+	
+	"PN".W.i3.%B0   := INT_TO_BYTE("SM1".iCountSS);
+	"PN".W.i3.%B1   := INT_TO_BYTE("SM2".iCountSS);
+	"PN".W.i4       := 0;
+	
+	"PN".W.i5   := "BMS1".BB.iTcellMaxMeas;
+	"PN".W.i6   := "BMS1".BB.iTcellAvgMeas;
+	"PN".W.i7   := "BMS1".BB.iTcellMinMeas;
+	"PN".W.i8   := "BMS1".BB.iNBRconnectCount;
+	"PN".W.i9   := "BMS1".BB.iNBRtotalCount;
+	"PN".W.i10  := WORD_TO_INT("BMS1".wRackOn);
+	"PN".W.i11  := WORD_TO_INT("BMS1".wRackFlt);
+	"PN".W.i12  := WORD_TO_INT("BMS1".BB.wSMstatusSt);
+	"PN".W.i13  := 0;
+	"PN".W.i14  := 0;
+	
+	"PN".W.i15  := "BMS2".BB.iTcellMaxMeas;
+	"PN".W.i16  := "BMS2".BB.iTcellAvgMeas;
+	"PN".W.i17  := "BMS2".BB.iTcellMinMeas;
+	"PN".W.i18  := "BMS2".BB.iNBRconnectCount;
+	"PN".W.i19  := "BMS2".BB.iNBRtotalCount;
+	"PN".W.i20  := WORD_TO_INT("BMS2".wRackOn);;
+	"PN".W.i21  := WORD_TO_INT("BMS2".wRackFlt);
+	"PN".W.i22  := WORD_TO_INT("BMS2".BB.wSMstatusSt);
+	"PN".W.i23  := 0;
+	"PN".W.i24  := 0;
+	
+	"PN".W.i25  := "PCS_1".R.bStatusDspRJ14;
+	"PN".W.i26  := WORD_TO_INT("PCS_1".W.wBankDcEnbCmd);
+	"PN".W.i27  := 0;
+	"PN".W.i28  := 0;
+	"PN".W.i29  := 0;
+	
+	"PN".W.i30 := WORD_TO_INT("MvSkid_1".wLine1DiscSt);
+	"PN".W.i31 := WORD_TO_INT("MvSkid_1".wLine2DiscSt);
+	"PN".W.i32 := WORD_TO_INT("MvSkid_1".wProt1DiscSt);
+	"PN".W.i33 := WORD_TO_INT("MvSkid_1".wProt1CircBrkSt);
+	"PN".W.i34 := 0;
+	"PN".W.i35 := 0;
+	
+	//Real
+	
+	"PN".W.r1   := "PCS_1".R.diCurrentFault;
+	"PN".W.r2   := "PCS_1".R.diCurrentFaultModule;
+	"PN".W.r3   := 0.0;
+	"PN".W.r4   := 0.0;
+	
+	"PN".W.r5   := "BMS1".BB.rSOCmeas;
+	"PN".W.r6   := "BMS1".BB.rSOHmeas;
+	"PN".W.r7   := "BMS1".BB.rVdcMeas;
+	"PN".W.r8   := "BMS1".BB.rIdcMeas;
+	"PN".W.r9   := "BMS1".rPchaLim;
+	"PN".W.r10  := "BMS1".rPdschLim;
+	"PN".W.r11  := "BMS1".BB.rVcellMaxMeas;
+	"PN".W.r12  := "BMS1".BB.rVcellAvgMeas;
+	"PN".W.r13  := "BMS1".BB.rVcellMinMeas;
+	"PN".W.r14  := 0.0;
+	
+	"PN".W.r15  := "BMS2".BB.rSOCmeas;
+	"PN".W.r16  := "BMS2".BB.rSOHmeas;
+	"PN".W.r17  := "BMS2".BB.rVdcMeas;
+	"PN".W.r18  := "BMS2".BB.rIdcMeas;
+	"PN".W.r19  := "BMS2".rPchaLim;
+	"PN".W.r20  := "BMS2".rPdschLim;
+	"PN".W.r21  := "BMS2".BB.rVcellMaxMeas;
+	"PN".W.r22  := "BMS2".BB.rVcellAvgMeas;
+	"PN".W.r23  := "BMS2".BB.rVcellMinMeas;
+	"PN".W.r24  := 0.0;
+	
+	"PN".W.r25  := "PCS_1".rLVacMeas;
+	"PN".W.r26  := "PCS_1".rIacTotMeas;
+	"PN".W.r27  := "PCS_1".rPacBus1Meas;
+	"PN".W.r28  := "PCS_1".rPacBus2Meas;
+	"PN".W.r29  := "PCS_1".rQacBus1Meas;
+	"PN".W.r30  := "PCS_1".rQacBus2Meas;
+	"PN".W.r31  := "PCS_1".R.rDCvoltageBus_3;
+	"PN".W.r32  := "PCS_1".R.rDCvoltageBus_4;
+	"PN".W.r33  := "PCS_1".R.rDCvoltageExt_4;
+	"PN".W.r34  := "PCS_1".R.rDCvoltageExt_2;
+	"PN".W.r35  := "PCS_1".R.rDCvoltageLast_1;
+	"PN".W.r36  := "PCS_1".R.rDCvoltageExt_3;
+	"PN".W.r37  := "PCS_1".rMod1MaxTemp;
+	"PN".W.r38  := "PCS_1".rMod2MaxTemp;
+	"PN".W.r39  := "PCS_1".rMod3MaxTemp;
+	"PN".W.r40  := "PCS_1".rMod4MaxTemp;
+	"PN".W.r41  := "PCS_1".rMod5MaxTemp;
+	"PN".W.r42  := "PCS_1".rMod6MaxTemp;
+	"PN".W.r43  := 0.0;
+	"PN".W.r44  := 0.0;
+	
+	"PN".W.r45 := "MvSkid_1".R.rPT100Trafo1St;
+	"PN".W.r46 := 0.0;
+	"PN".W.r47 := 0.0;
+	
+END_FUNCTION
+

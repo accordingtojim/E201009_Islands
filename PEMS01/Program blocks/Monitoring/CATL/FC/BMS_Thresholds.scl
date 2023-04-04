@@ -1,0 +1,50 @@
+﻿FUNCTION "BMS_Thresholds" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      rVmin_Cell_Set : Real;
+      rVmin_Cell_Reset : Real;
+      rVmax_Cell_Set : Real;
+      rVmax_Cell_Reset : Real;
+      rVcellSetAutocharge : Real;
+      rVcellResetAutocharge : Real;
+      rSystem_MinCell_V : Real;
+      rSystem_MaxCell_V : Real;
+   END_VAR
+
+   VAR_OUTPUT 
+      xEnable_Ch : Bool;
+      xEnable_Dh : Bool;
+      xReq_Autocharge : Bool;
+   END_VAR
+
+
+BEGIN
+	
+	IF #rSystem_MinCell_V < #rVmin_Cell_Set THEN
+	    #xEnable_Dh := false;
+	END_IF;
+	
+	IF #rSystem_MinCell_V > #rVmin_Cell_Reset THEN
+	    #xEnable_Dh := true;
+	END_IF;
+	
+	
+	IF #rSystem_MaxCell_V > #rVmax_Cell_Set THEN
+	    #xEnable_Ch := false;
+	END_IF;
+	
+	IF #rSystem_MaxCell_V < #rVmax_Cell_Reset THEN
+	    #xEnable_Ch := true;
+	END_IF;
+	
+	IF #rSystem_MinCell_V <= #rVcellSetAutocharge THEN
+	    #xReq_Autocharge := true;
+	END_IF;
+	
+	IF #rSystem_MinCell_V >= #rVcellResetAutocharge THEN
+	    #xReq_Autocharge := false;
+	END_IF;
+	
+END_FUNCTION
+

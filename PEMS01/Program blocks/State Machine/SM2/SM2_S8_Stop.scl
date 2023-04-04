@@ -1,0 +1,64 @@
+﻿FUNCTION "SM2_S8_Stop" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	// **********************************************************
+	// *                   MANAGEMENT ACTION                    *
+	// **********************************************************
+	
+	REGION State Machine Status
+	    
+	    "SM2".xSsBootSt      := False;
+	    "SM2".xSsWarmUpSt    := False;
+	    "SM2".xSsReadySt     := False;
+	    "SM2".xSsStandBySt   := False;
+	    "SM2".xSsRunSt       := False;
+	    "SM2".xSsTestSt      := False;
+	    "SM2".xSsAutoMaintSt := False;
+	    "SM2".xSsStopSt      := True;
+	    "SM2".xSsFaultSt     := False;
+	    
+	    "SM2".iCountSS := 8;
+	    
+	END_REGION
+	
+	"SM2".xPCSrunCmd := False;      //In stop state send stop command to the PCS
+	
+	REGION PCS Enable Off
+	    
+	    IF "SM2".xPCSreadySt        //When the PCS are in ready take out the enable command to the PCS
+	    THEN
+	        "SM2".xPCSenbCmd := False;
+	    END_IF;
+	END_REGION
+	
+	REGION Command Open Battery
+	    
+	    IF "SM2".xPCSstopSt     //When the PCS are in stop send open command to the battery
+	    THEN
+	        "SM2".xBattCloseCmd := False;
+	    END_IF;
+	END_REGION
+	
+	
+	// **********************************************************
+	// *                 MANAGEMENT TRANSITION                  *
+	// **********************************************************
+	
+	// Transition from Stop to WarmUp
+	
+	IF "SM2".xBattOpenSt AND NOT "SM2".xStopAutomaintCmd        //Whit battery open and not automaintenance go to warmup state
+	THEN
+	    "SM2".xT81 := True;
+	END_IF;
+	
+	// Reset Transition
+	
+	"SM2".xT32   := False;
+	"SM2".xT43   := False;
+	"SM2".xT52   := False;
+	"SM2".xT72   := False;
+	
+END_FUNCTION
+

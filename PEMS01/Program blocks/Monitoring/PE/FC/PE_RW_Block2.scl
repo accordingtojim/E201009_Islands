@@ -1,0 +1,25 @@
+﻿FUNCTION "PE_RW_Block2" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      In_Data : Array[1..125] of Word;   // pcs
+   END_VAR
+
+   VAR_OUTPUT 
+      Out_Data : "RW_PE";
+   END_VAR
+
+
+BEGIN
+	//27-03-2023
+	
+	REGION
+	    
+	    #Out_Data.iModePctrlCmd := WORD_TO_INT(#In_Data[1]);
+	    #Out_Data.iModeQctrlCmd := WORD_TO_INT(#In_Data[2]);
+	    #Out_Data.rPacRef       := INT_TO_REAL(WORD_TO_INT(#In_Data[3]))/100.0;
+	    #Out_Data.rQacRef       := INT_TO_REAL(WORD_TO_INT(#In_Data[8]))/100.0;
+	    
+	END_REGION
+END_FUNCTION
+

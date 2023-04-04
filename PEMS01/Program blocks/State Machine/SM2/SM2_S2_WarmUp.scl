@@ -1,0 +1,74 @@
+﻿FUNCTION "SM2_S2_WarmUp" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      xWarmUpSt : Bool;
+   END_VAR
+
+
+BEGIN
+	// **********************************************************
+	// *                   MANAGEMENT ACTION                    *
+	// **********************************************************
+	
+	REGION State Machine Status
+	    
+	    "SM2".xSsBootSt      := False;
+	    "SM2".xSsWarmUpSt    := True;
+	    "SM2".xSsReadySt     := False;
+	    "SM2".xSsStandBySt   := False;
+	    "SM2".xSsRunSt       := False;
+	    "SM2".xSsTestSt      := False;
+	    "SM2".xSsAutoMaintSt := False;
+	    "SM2".xSsStopSt      := False;
+	    "SM2".xSsFaultSt     := False;
+	    
+	    "SM2".iCountSS       := 2;
+	    
+	END_REGION
+	
+	REGION Activation
+	    
+	    "SM2".xCommCmd   := True;    //Enable all communication on the Power Island
+	    "SM2".xAuxCmd    := True;    //Enable all auxiliary equipment on the Power Island
+	    
+	END_REGION
+	
+	REGION Activation Active
+	    
+	    IF "SM2".xAuxSt AND "SM2".xCommSt     //Check the feedback of communication and auxiliary on the Power Island
+	    THEN
+	        #xWarmUpSt := True;
+	
+	    END_IF;
+	    
+	END_REGION
+	
+	
+	// **********************************************************
+	// *                 MANAGEMENT TRANSITION                  *
+	// **********************************************************
+	
+	// Transition from WarmUp to Ready
+	
+	IF #xWarmUpSt
+	THEN
+	    "SM2".xT21 := True;
+	    #xWarmUpSt := False;
+	END_IF;
+	
+	// Transition from WarmUp to Fault
+	
+	IF "SM2".xFltSt
+	THEN
+	    "SM2".xT22 := True;
+	END_IF;
+	
+	// Reset Transition
+	
+	"SM2".xT11   := False;
+	"SM2".xT81   := False;
+	"SM2".xT91   := False;
+	
+END_FUNCTION
+

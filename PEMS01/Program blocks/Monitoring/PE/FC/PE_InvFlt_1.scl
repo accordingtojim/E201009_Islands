@@ -1,0 +1,32 @@
+﻿FUNCTION "PE_InvFlt_1" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      iInput : Int;
+      xReset : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      wOut : Word;
+   END_VAR
+
+   VAR_TEMP 
+      iCounter : Int;
+   END_VAR
+
+   VAR CONSTANT 
+      iStart : Int := 1;
+      iEnd : Int := 393;
+   END_VAR
+
+
+BEGIN
+	FOR #iCounter := 1 TO #iEnd DO
+	    // Statement section FOR
+	    ;
+	END_FOR;
+	
+	
+	
+END_FUNCTION
+
