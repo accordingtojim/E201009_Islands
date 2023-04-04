@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V17" />
+  <DocumentInfo>
+    <Created>2023-04-04T07:47:19.74657Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V17 Update 4</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V17 Update 4</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V17 Update 4</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V17 Update 4</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Temp">
+    <Member Name="xSpare" Datatype="Bool" />
+    <Member Name="BBwAlm1" Datatype="Word" />
+    <Member Name="BBwWarn1" Datatype="Word" />
+    <Member Name="BR01wAlm1" Datatype="Word" />
+    <Member Name="BR01wAlm2" Datatype="Word" />
+    <Member Name="BR01wAlm3" Datatype="Word" />
+    <Member Name="BR01wWarn1" Datatype="Word" />
+    <Member Name="BR02wAlm1" Datatype="Word" />
+    <Member Name="BR02wAlm2" Datatype="Word" />
+    <Member Name="BR02wAlm3" Datatype="Word" />
+    <Member Name="BR02wWarn1" Datatype="Word" />
+    <Member Name="BR03wAlm1" Datatype="Word" />
+    <Member Name="BR03wAlm2" Datatype="Word" />
+    <Member Name="BR03wAlm3" Datatype="Word" />
+    <Member Name="BR03wWarn1" Datatype="Word" />
+    <Member Name="BR04wAlm1" Datatype="Word" />
+    <Member Name="BR04wAlm2" Datatype="Word" />
+    <Member Name="BR04wAlm3" Datatype="Word" />
+    <Member Name="BR04wWarn1" Datatype="Word" />
+    <Member Name="BR05wAlm1" Datatype="Word" />
+    <Member Name="BR05wAlm2" Datatype="Word" />
+    <Member Name="BR05wAlm3" Datatype="Word" />
+    <Member Name="BR05wWarn1" Datatype="Word" />
+    <Member Name="BR06wAlm1" Datatype="Word" />
+    <Member Name="BR06wAlm2" Datatype="Word" />
+    <Member Name="BR06wAlm3" Datatype="Word" />
+    <Member Name="BR06wWarn1" Datatype="Word" />
+    <Member Name="BR07wAlm1" Datatype="Word" />
+    <Member Name="BR07wAlm2" Datatype="Word" />
+    <Member Name="BR07wAlm3" Datatype="Word" />
+    <Member Name="BR07wWarn1" Datatype="Word" />
+    <Member Name="BR08wAlm1" Datatype="Word" />
+    <Member Name="BR08wAlm2" Datatype="Word" />
+    <Member Name="BR08wAlm3" Datatype="Word" />
+    <Member Name="BR08wWarn1" Datatype="Word" />
+    <Member Name="BR09wAlm1" Datatype="Word" />
+    <Member Name="BR09wAlm2" Datatype="Word" />
+    <Member Name="BR09wAlm3" Datatype="Word" />
+    <Member Name="BR09wWarn1" Datatype="Word" />
+    <Member Name="BR10wAlm1" Datatype="Word" />
+    <Member Name="BR10wAlm2" Datatype="Word" />
+    <Member Name="BR10wAlm3" Datatype="Word" />
+    <Member Name="BR10wWarn1" Datatype="Word" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" Accessibility="Public" />
+  </Section>
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>BMS 2 (M)</Name>
+      <Number>24</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="5" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LiteralConstant" UId="21">
+      <Constant>
+        <ConstantType>Bool</ConstantType>
+        <ConstantValue>False</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="BMS2" />
+        <Component Name="xREQ11" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="23">
+      <Constant>
+        <ConstantType>USInt</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LiteralConstant" UId="24">
+      <Constant>
+        <ConstantType>UDInt</ConstantType>
+        <ConstantValue>40769</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LiteralConstant" UId="25">
+      <Constant>
+        <ConstantType>UInt</ConstantType>
+        <ConstantValue>19</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="BMS2" />
+        <Component Name="arrData11" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="BMS2" />
+        <Component Name="TCON11" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="28" />
+    <Part Name="MB_CLIENT" Version="5.2" UId="29">
+      <Instance Scope="GlobalVariable" UId="30">
+        <Component Name="MbBMS21" />
+      </Instance>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="35">
+      <Powerrail />
+      <NameCon UId="29" Name="en" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="21" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="28" Name="out" />
+      <NameCon UId="29" Name="DISCONNECT" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="22" />
+      <NameCon UId="29" Name="REQ" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="23" />
+      <NameCon UId="29" Name="MB_MODE" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="24" />
+      <NameCon UId="29" Name="MB_DATA_ADDR" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="25" />
+      <NameCon UId="29" Name="MB_DATA_LEN" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="26" />
+      <NameCon UId="29" Name="MB_DATA_PTR" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="27" />
+      <NameCon UId="29" Name="CONNECT" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="29" Name="DONE" />
+      <OpenCon UId="31" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="29" Name="BUSY" />
+      <OpenCon UId="32" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="29" Name="ERROR" />
+      <OpenCon UId="33" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="29" Name="STATUS" />
+      <OpenCon UId="34" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="6" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="8" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="9" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Function Modbus Client</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="E" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="BMS2" />
+        <Component Name="arrData11" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="BMS2" />
+        <Component Name="BB" />
+      </Symbol>
+    </Access>
+    <Call UId="23">
+      <CallInfo Name="BMS Data" BlockType="FC">
+        <Parameter Name="arrInput" Section="Input" Type="Array[1..125] of Word" />
+        <Parameter Name="strOutput" Section="Output" Type="&quot;BMS_BB&quot;" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="24">
+      <Powerrail />
+      <NameCon UId="23" Name="en" />
+    </Wire>
+    <Wire UId="25">
+      <IdentCon UId="21" />
+      <NameCon UId="23" Name="arrInput" />
+    </Wire>
+    <Wire UId="26">
+      <NameCon UId="23" Name="strOutput" />
+      <IdentCon UId="22" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="F" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="10" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="12" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="13" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text>Read BMS data value</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource />
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1C" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>it-IT</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="20" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="21" CompositionName="Items">
+            <AttributeList>
+              <Culture>it-IT</Culture>
+              <Text>ModBus TCP for CATL Battery</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="22" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="23" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>
