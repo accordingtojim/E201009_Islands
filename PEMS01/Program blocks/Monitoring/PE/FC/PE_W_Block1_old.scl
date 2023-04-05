@@ -12,7 +12,7 @@ VERSION : 0.1
 
 BEGIN
 	REGION
-	    #Out_Data[1] := #In_Data."wUserPswIns";
+	    #Out_Data[1] := INT_TO_WORD(#In_Data."iUserPswIns");
 	END_REGION
 END_FUNCTION
 
