@@ -19,7 +19,7 @@ BEGIN
 	
 	CASE #iType OF
 	    1:
-	        #Out_Data[1] := #In_Data."wUserPswIns";
+	        #Out_Data[1] := INT_TO_WORD(#In_Data."iUserPswIns");
 	        ;
 	    2:
 	        #Out_Data[1] := INT_TO_WORD(#In_Data."iModePctrlCmd");
@@ -62,6 +62,21 @@ BEGIN
 	        END_IF;
 	    10:
 	        #Out_Data[1] := INT_TO_WORD(REAL_TO_INT(#In_Data.iWatchDog));
+	        
+	    11:
+	        #Out_Data[1] := BOOL_TO_WORD(#In_Data.xDC_SelectorEnable);
+	        
+	    12:
+	        #Out_Data[1] := BOOL_TO_WORD(#In_Data.xAC_SelectorEnable);
+	        
+	    13:
+	        #Out_Data[1] := BOOL_TO_WORD(#In_Data.xGeneral_SelectorEnable);
+	        
+	    14:
+	        #Out_Data[1] := BOOL_TO_WORD(#In_Data.xMVskid_comm);
+	        
+	    15:
+	        #Out_Data[1] := UINT_TO_WORD(#In_Data.uiMVskid_CB);
 	END_CASE;
 	
 	
