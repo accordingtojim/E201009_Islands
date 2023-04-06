@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V17" />
   <DocumentInfo>
-    <Created>2023-04-06T09:22:07.5698643Z</Created>
+    <Created>2023-04-06T09:42:48.2526329Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -103,7 +103,7 @@
       <IsIECCheckEnabled>false</IsIECCheckEnabled>
       <MemoryLayout>Optimized</MemoryLayout>
       <Name>BMS 2 (S)</Name>
-      <Number>25</Number>
+      <Number>26</Number>
       <ProgrammingLanguage>LAD</ProgrammingLanguage>
       <SetENOAutomatically>false</SetENOAutomatically>
       <UDABlockProperties />
@@ -296,7 +296,7 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
-        <Component Name="MbBMS1" />
+        <Component Name="MbBMS2" />
         <Component Name="DONE" />
       </Symbol>
     </Access>
@@ -526,7 +526,7 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
-        <Component Name="MbBMS1" />
+        <Component Name="MbBMS2" />
         <Component Name="DONE" />
       </Symbol>
     </Access>
@@ -756,7 +756,7 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
-        <Component Name="MbBMS1" />
+        <Component Name="MbBMS2" />
         <Component Name="DONE" />
       </Symbol>
     </Access>
@@ -852,7 +852,7 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
-        <Component Name="MbBMS1" />
+        <Component Name="MbBMS2" />
         <Component Name="DONE" />
       </Symbol>
     </Access>
@@ -5565,19 +5565,19 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
-        <Component Name="MbBMS1" />
+        <Component Name="MbBMS2" />
         <Component Name="ERROR" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="22">
       <Symbol>
-        <Component Name="MbBMS10" />
+        <Component Name="MbBMS20" />
         <Component Name="ERROR" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="23">
       <Symbol>
-        <Component Name="MbBMS11" />
+        <Component Name="MbBMS21" />
         <Component Name="ERROR" />
       </Symbol>
     </Access>
