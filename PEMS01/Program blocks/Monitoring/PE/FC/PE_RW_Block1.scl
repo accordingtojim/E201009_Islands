@@ -17,7 +17,7 @@ BEGIN
 	
 	REGION
 	
-	    #Out_Data.wUserPswIns := #In_Data[1];
+	    #Out_Data.iUserPswIns := WORD_TO_INT(#In_Data[1]);
 	
 	END_REGION
 END_FUNCTION
