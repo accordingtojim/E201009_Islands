@@ -27,7 +27,7 @@ BEGIN
 	    
 	END_REGION
 	
-	REGION Ready Condition
+	REGION Ready Condition (battery) + System enabled from HMI
 	    
 	    IF "SM1".xReadyCondSt AND "SM1".xEnbSSysSt      //With ready condition and Subsystem enabled from HMI the subsystem is ready
 	    THEN
