@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V17" />
   <DocumentInfo>
-    <Created>2023-04-07T09:27:46.3694339Z</Created>
+    <Created>2023-04-07T13:41:57.4659952Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -92,20 +92,20 @@
     </Access>
     <Access Scope="GlobalVariable" UId="22">
       <Symbol>
-        <Component Name="ESTOP2_DB" />
-        <Component Name="Q" />
+        <Component Name="Emergency_DB" />
+        <Component Name="xCore" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="23">
       <Symbol>
         <Component Name="Emergency_DB" />
-        <Component Name="xCore" />
+        <Component Name="xByPassCore" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="24">
       <Symbol>
-        <Component Name="Emergency_DB" />
-        <Component Name="xByPassCore" />
+        <Component Name="SM_TEST" />
+        <Component Name="bypass_eme_core" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="25">
@@ -233,9 +233,7 @@
     <Part Name="Contact" UId="46">
       <Negated Name="operand" />
     </Part>
-    <Part Name="Contact" UId="47">
-      <Negated Name="operand" />
-    </Part>
+    <Part Name="Contact" UId="47" />
     <Part Name="Contact" UId="48">
       <Negated Name="operand" />
     </Part>
@@ -268,7 +266,7 @@
     <Part Name="Contact" UId="65" />
     <Part Name="Contact" UId="66" />
     <Part Name="O" UId="67">
-      <TemplateValue Name="Card" Type="Cardinality">16</TemplateValue>
+      <TemplateValue Name="Card" Type="Cardinality">15</TemplateValue>
     </Part>
     <Part Name="SCoil" UId="68" />
   </Parts>
@@ -277,7 +275,6 @@
       <Powerrail />
       <NameCon UId="44" Name="in" />
       <NameCon UId="45" Name="in" />
-      <NameCon UId="46" Name="in" />
       <NameCon UId="48" Name="in" />
       <NameCon UId="49" Name="in" />
       <NameCon UId="50" Name="in" />
@@ -308,7 +305,7 @@
     </Wire>
     <Wire UId="73">
       <NameCon UId="45" Name="out" />
-      <NameCon UId="67" Name="in2" />
+      <NameCon UId="46" Name="in" />
     </Wire>
     <Wire UId="74">
       <IdentCon UId="23" />
@@ -324,7 +321,7 @@
     </Wire>
     <Wire UId="77">
       <NameCon UId="47" Name="out" />
-      <NameCon UId="67" Name="in3" />
+      <NameCon UId="67" Name="in2" />
     </Wire>
     <Wire UId="78">
       <IdentCon UId="25" />
@@ -332,7 +329,7 @@
     </Wire>
     <Wire UId="79">
       <NameCon UId="48" Name="out" />
-      <NameCon UId="67" Name="in4" />
+      <NameCon UId="67" Name="in3" />
     </Wire>
     <Wire UId="80">
       <IdentCon UId="26" />
@@ -340,7 +337,7 @@
     </Wire>
     <Wire UId="81">
       <NameCon UId="49" Name="out" />
-      <NameCon UId="67" Name="in5" />
+      <NameCon UId="67" Name="in4" />
     </Wire>
     <Wire UId="82">
       <IdentCon UId="27" />
@@ -356,7 +353,7 @@
     </Wire>
     <Wire UId="85">
       <NameCon UId="51" Name="out" />
-      <NameCon UId="67" Name="in6" />
+      <NameCon UId="67" Name="in5" />
     </Wire>
     <Wire UId="86">
       <IdentCon UId="29" />
@@ -364,7 +361,7 @@
     </Wire>
     <Wire UId="87">
       <NameCon UId="52" Name="out" />
-      <NameCon UId="67" Name="in7" />
+      <NameCon UId="67" Name="in6" />
     </Wire>
     <Wire UId="88">
       <IdentCon UId="30" />
@@ -372,7 +369,7 @@
     </Wire>
     <Wire UId="89">
       <NameCon UId="53" Name="out" />
-      <NameCon UId="67" Name="in8" />
+      <NameCon UId="67" Name="in7" />
     </Wire>
     <Wire UId="90">
       <IdentCon UId="31" />
@@ -380,7 +377,7 @@
     </Wire>
     <Wire UId="91">
       <NameCon UId="54" Name="out" />
-      <NameCon UId="67" Name="in9" />
+      <NameCon UId="67" Name="in8" />
     </Wire>
     <Wire UId="92">
       <IdentCon UId="32" />
@@ -388,7 +385,7 @@
     </Wire>
     <Wire UId="93">
       <NameCon UId="55" Name="out" />
-      <NameCon UId="67" Name="in10" />
+      <NameCon UId="67" Name="in9" />
     </Wire>
     <Wire UId="94">
       <IdentCon UId="33" />
@@ -396,7 +393,7 @@
     </Wire>
     <Wire UId="95">
       <NameCon UId="56" Name="out" />
-      <NameCon UId="67" Name="in11" />
+      <NameCon UId="67" Name="in10" />
     </Wire>
     <Wire UId="96">
       <IdentCon UId="34" />
@@ -404,7 +401,7 @@
     </Wire>
     <Wire UId="97">
       <NameCon UId="57" Name="out" />
-      <NameCon UId="67" Name="in12" />
+      <NameCon UId="67" Name="in11" />
     </Wire>
     <Wire UId="98">
       <IdentCon UId="35" />
@@ -440,7 +437,7 @@
     </Wire>
     <Wire UId="106">
       <NameCon UId="62" Name="out" />
-      <NameCon UId="67" Name="in13" />
+      <NameCon UId="67" Name="in12" />
     </Wire>
     <Wire UId="107">
       <IdentCon UId="39" />
@@ -456,7 +453,7 @@
     </Wire>
     <Wire UId="110">
       <NameCon UId="64" Name="out" />
-      <NameCon UId="67" Name="in14" />
+      <NameCon UId="67" Name="in13" />
     </Wire>
     <Wire UId="111">
       <IdentCon UId="41" />
@@ -464,7 +461,7 @@
     </Wire>
     <Wire UId="112">
       <NameCon UId="65" Name="out" />
-      <NameCon UId="67" Name="in15" />
+      <NameCon UId="67" Name="in14" />
     </Wire>
     <Wire UId="113">
       <IdentCon UId="42" />
@@ -472,7 +469,7 @@
     </Wire>
     <Wire UId="114">
       <NameCon UId="66" Name="out" />
-      <NameCon UId="67" Name="in16" />
+      <NameCon UId="67" Name="in15" />
     </Wire>
     <Wire UId="115">
       <NameCon UId="67" Name="out" />
