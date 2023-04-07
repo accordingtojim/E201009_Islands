@@ -9,15 +9,15 @@ BEGIN
 	
 	REGION State Machine Status
 	    
-	    "SM1".xSsBootSt      := False;
-	    "SM1".xSsWarmUpSt    := False;
-	    "SM1".xSsReadySt     := False;
-	    "SM1".xSsStandBySt   := False;
-	    "SM1".xSsRunSt       := True;
-	    "SM1".xSsTestSt      := False;
+	    "SM1".xSsBootSt := False;
+	    "SM1".xSsWarmUpSt := False;
+	    "SM1".xSsReadySt := False;
+	    "SM1".xSsStandBySt := False;
+	    "SM1".xSsRunSt := True;
+	    "SM1".xSsTestSt := False;
 	    "SM1".xSsAutoMaintSt := False;
-	    "SM1".xSsStopSt      := False;
-	    "SM1".xSsFaultSt     := False;
+	    "SM1".xSsStopSt := False;
+	    "SM1".xSsFaultSt := False;
 	    
 	    "SM1".iCountSS := 5;
 	    
@@ -36,6 +36,13 @@ BEGIN
 	// **********************************************************
 	// *                 MANAGEMENT TRANSITION                  *
 	// **********************************************************
+	
+	// Transition from Run to WarmUp
+	
+	IF NOT "SM1".xAuxSt OR NOT "SM1".xCommSt     //With standby command e PCS in ready return to standby state
+	THEN
+	    "SM1".xT74 := True;
+	END_IF;
 	
 	// Transition from Run to StandBy
 	

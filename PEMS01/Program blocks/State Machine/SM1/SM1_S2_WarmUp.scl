@@ -13,24 +13,24 @@ BEGIN
 	
 	REGION State Machine Status
 	    
-	    "SM1".xSsBootSt      := False;
-	    "SM1".xSsWarmUpSt    := True;
-	    "SM1".xSsReadySt     := False;
-	    "SM1".xSsStandBySt   := False;
-	    "SM1".xSsRunSt       := False;
-	    "SM1".xSsTestSt      := False;
+	    "SM1".xSsBootSt := False;
+	    "SM1".xSsWarmUpSt := True;
+	    "SM1".xSsReadySt := False;
+	    "SM1".xSsStandBySt := False;
+	    "SM1".xSsRunSt := False;
+	    "SM1".xSsTestSt := False;
 	    "SM1".xSsAutoMaintSt := False;
-	    "SM1".xSsStopSt      := False;
-	    "SM1".xSsFaultSt     := False;
+	    "SM1".xSsStopSt := False;
+	    "SM1".xSsFaultSt := False;
 	    
-	    "SM1".iCountSS       := 2;
+	    "SM1".iCountSS := 2;
 	    
 	END_REGION
 	
 	REGION Activation
 	    
-	    "SM1".xCommCmd   := True;    //Enable all communication on the Power Island
-	    "SM1".xAuxCmd    := True;    //Enable all auxiliary equipment on the Power Island
+	    "SM1".xCommCmd := True;    //Enable all communication on the Power Island
+	    "SM1".xAuxCmd := True;    //Enable all auxiliary equipment on the Power Island
 	    
 	END_REGION
 	
@@ -39,7 +39,7 @@ BEGIN
 	    IF "SM1".xAuxSt AND "SM1".xCommSt     //Check the feedback of communication and auxiliary on the Power Island
 	    THEN
 	        #xWarmUpSt := True;
-	
+	        
 	    END_IF;
 	    
 	END_REGION
@@ -66,9 +66,12 @@ BEGIN
 	
 	// Reset Transition
 	
-	"SM1".xT11   := False;
-	"SM1".xT81   := False;
-	"SM1".xT91   := False;
+	"SM1".xT11 := False;
+	"SM1".xT81 := False;
+	"SM1".xT91 := False;
+	"SM1".xT74 := False;
+	"SM1".xT75 := False;
+	"SM1".xT76 := False;
 	
 END_FUNCTION
 
