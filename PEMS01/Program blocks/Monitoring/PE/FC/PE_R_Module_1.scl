@@ -18,7 +18,7 @@ BEGIN
 	
 	// 23/03/2023
 	REGION
-	    #Output_Data.Module_1.bModuleStatus := #Input_Data[1];
+	    #Output_Data.Module_1.usiModuleStatus := WORD_TO_USINT(#Input_Data[1]);
 	    #Output_Data.Module_1.rCurrent_R := INT_TO_REAL(WORD_TO_INT(#Input_Data[2]));
 	    #Output_Data.Module_1.rCurrent_S := INT_TO_REAL(WORD_TO_INT(#Input_Data[3]));
 	    #Output_Data.Module_1.rCurrent_T := INT_TO_REAL(WORD_TO_INT(#Input_Data[4]));
