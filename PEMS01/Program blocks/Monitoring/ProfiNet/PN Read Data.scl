@@ -11,14 +11,15 @@ BEGIN
 	
 	//Boolean
 	
-	"PN".xStopCmd       := "PN".R."x1.1";
-	"PN".xStandByCmd    := "PN".R."x1.2";
-	"PN".xRunCmd        := "PN".R."x1.3";
-	"PN".xFltClearCmd   := "PN".R."x1.4";
-	"PN".xFltCmd        := "PN".R."x1.8";
+	"PN".xStopCmd := "PN".R."x1.1";
+	"PN".xStandByCmd := "PN".R."x1.2";
+	"PN".xRunCmd := "PN".R."x1.3";
+	"PN".xFltClearCmd := "PN".R."x1.4";
+	"PN".xFltCmd := "PN".R."x1.8";
 	
-	"PN".MVSKID.xCircBrkCloseCmd    := "PN".R."x2.1";
-	"PN".MVSKID.xCircBrkOpenCmd     := "PN".R."x2.2";
+	"PN".MVSKID.xCircBrkCloseCmd := "PN".R."x2.1";
+	"PN".MVSKID.xCircBrkOpenCmd := "PN".R."x2.2";
+	"PN".MVSKID.xACDC_CloseCmd := "PN".R."x2.3";
 	
 	//Integer
 	
