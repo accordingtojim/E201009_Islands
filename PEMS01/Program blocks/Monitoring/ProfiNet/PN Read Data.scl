@@ -19,6 +19,7 @@ BEGIN
 	
 	"PN".MVSKID.xCircBrkCloseCmd    := "PN".R."x2.1";
 	"PN".MVSKID.xCircBrkOpenCmd     := "PN".R."x2.2";
+	"PN".MVSKID.xACDC_CloseCmd      := "PN".R."x2.3";
 	
 	//Integer
 	
