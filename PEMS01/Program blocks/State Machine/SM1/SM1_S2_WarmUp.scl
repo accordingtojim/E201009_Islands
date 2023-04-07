@@ -69,6 +69,9 @@ BEGIN
 	"SM1".xT11   := False;
 	"SM1".xT81   := False;
 	"SM1".xT91   := False;
+	"SM1".xT74   := False;
+	"SM1".xT75   := False;
+	"SM1".xT76   := False;
 	
 END_FUNCTION
 

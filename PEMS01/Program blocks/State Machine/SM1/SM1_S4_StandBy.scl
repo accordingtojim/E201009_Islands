@@ -37,6 +37,13 @@ BEGIN
 	// *                 MANAGEMENT TRANSITION                  *
 	// **********************************************************
 	
+	// Transition from Standby to WarmUp
+	
+	IF NOT "SM1".xAuxSt OR NOT "SM1".xCommSt     //With standby command e PCS in ready return to standby state
+	THEN
+	    "SM1".xT75 := True;
+	END_IF;
+	
 	// Transition from StandBy to Run
 	
 	IF "SM1".xPCSrunSt AND "SM1".xRunCmd        //With PCS in run and the command on go to run state
